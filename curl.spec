@@ -45,11 +45,11 @@ obs³ugi SSL (https:).
 LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--with-ssl=/usr
-make 
+%{__make} 
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make DESTDIR=$RPM_BUILD_ROOT install
+%{__make} DESTDIR=$RPM_BUILD_ROOT install
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	README* CHANGES CONTRIBUTE FAQ LEGAL MPL-1.0.txt RESOURCES TODO
