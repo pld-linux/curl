@@ -61,7 +61,7 @@ Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
 %description static
-Static version of curl library
+Static version of curl library.
 
 %description -l pl static
 Statyczna wersja biblioteki curl.
@@ -92,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc docs/*.gz
 %attr(755,root,root) %{_bindir}/%{name}
-%attr(755,root,root) %{_libdir}/lib*.so.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_mandir}/man1/*
 
 %files devel
