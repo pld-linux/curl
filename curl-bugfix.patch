@@ -1,0 +1,19 @@
+--- lib/url.c	Fri May 11 08:40:04 2001
++++ lib/url.c.mis	Mon May 14 20:51:50 2001
+@@ -2043,6 +2043,16 @@
+ 
+     free(old_conn);          /* we don't need this anymore */
+ 
++    conn->resume_from = data->set_resume_from;
++    if (conn->resume_from) {
++        snprintf(resumerange, sizeof(resumerange), "%d-", conn->resume_from);
++        if (conn->bits.rangestringalloc == TRUE) 
++            free(conn->range);
++        
++        conn->range = strdup(resumerange); /* tell ourselves to fetch this range */
++        conn->bits.rangestringalloc = TRUE; /* mark as allocated */
++    }
++    
+     *in_connect = conn;      /* return this instead! */
+ 
+     infof(data, "Re-using existing connection! (#%d)\n", conn->connectindex);
