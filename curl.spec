@@ -4,7 +4,7 @@ Summary(pl):	NarzЙdzie do ╤ci╠gania plikСw z serwerСw (FTP, HTTP i innych)
 Summary(pt_BR):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS)
 Name:		curl
 Version:	7.9.2
-Release:	1
+Release:	2
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
@@ -16,6 +16,7 @@ Patch1:		%{name}-readtimeout-fix.patch
 URL:		http://curl.haxx.se/
 %{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	libcurl2
 
 %description
 cURL is a tool for getting files with URL syntax, supporting FTP,
@@ -71,6 +72,7 @@ Group(pt_BR):	Desenvolvimento/Bibliotecas
 Group(ru):	Разработка/Библиотеки
 Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
+Obsoletes:	libcurl2-devel
 
 %description devel
 Header files and development documentation for curl library.
