@@ -88,6 +88,7 @@ Summary(ru):	Файлы для разработки с использованием библиотеки curl
 Summary(uk):	Файли для розробки з використанням б╕бл╕отеки curl
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+%{!?_without_ssl:Requires:	openssl-devel >= 0.9.7c}
 Obsoletes:	libcurl2-devel
 
 %description devel
