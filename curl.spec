@@ -18,6 +18,7 @@ Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
 # Source0-md5:	8309cdffe4a111333b4309914bce1758
 Patch0:		%{name}-no_strip.patch
 URL:		http://curl.haxx.se/
+BuildRequires:	automake
 %{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.7c}
 Requires:	openssl-tools >= 0.9.7c
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -139,6 +140,7 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %patch0 -p1
 
 %build
+install /usr/share/automake/config.* .
 %configure \
 	%{!?_without_ssl:--with-ssl=%{_prefix}} \
 	%{!?_without_ssl:--with-ca-bundle=/usr/share/ssl/ca-bundle.crt} \
