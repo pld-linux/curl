@@ -17,8 +17,8 @@ Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-no_strip.patch
 URL:		http://curl.haxx.se/
-%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
-Requires:	openssl-tools
+%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.7}
+Requires:	openssl-tools >= 0.9.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libcurl2
 
