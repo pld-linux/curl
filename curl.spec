@@ -96,6 +96,7 @@ Summary(uk):	Файли для розробки з використанням б╕бл╕отеки curl
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libidn-devel >= 0.4.1
+%{?with_heimdal:Requires:	heimdal-devel}
 %{?with_ssl:Requires:	openssl-devel >= 0.9.7c}
 Obsoletes:	libcurl2-devel
 
