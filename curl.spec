@@ -10,20 +10,21 @@ Summary(pt_BR):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS
 Summary(ru):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk):	Утил╕та для отримання файл╕в з сервер╕в FTP, HTTP та ╕нших
 Name:		curl
-Version:	7.12.3
+Version:	7.13.0
 Release:	1
-License:	MPL
+License:	MIT-like
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
-# Source0-md5:	a71b80538872245b984e176de932e99e
+# Source0-md5:	bdf23eef698e70749990fb3df94e78cd
 Patch0:		%{name}-no_strip.patch
 Patch1:		%{name}-ac.patch
 URL:		http://curl.haxx.se/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	libidn-devel >= 0.4.1
 %{?with_heimdal:BuildRequires:	heimdal-devel}
+BuildRequires:	libtool
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
 Requires:	openssl-tools >= 0.9.7d
 Requires:	libidn >= 0.4.1
@@ -141,9 +142,12 @@ Bibliotecas estАticas para desenvolvimento com o curl.
 %patch1 -p1
 
 %build
-cp -f /usr/share/automake/config.* .
+#cp -f /usr/share/automake/config.* .
+%{__libtoolize}
+%{__aclocal}
 %{__autoconf}
 %{__autoheader}
+%{__automake}
 %configure \
 	%{?with_ssl:--with-ssl=%{_prefix}} \
 	%{?with_ssl:--with-ca-bundle=/usr/share/ssl/ca-bundle.crt} \
@@ -166,20 +170,21 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/%{name}
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
-%{_mandir}/man1/*
+%doc CHANGES COPYING README docs/{BUGS,FAQ,FEATURES,HISTORY,KNOWN_BUGS,MANUAL,SSLCERTS,THANKS,TODO,TheArtOfHttpScripting}
+%attr(755,root,root) %{_bindir}/curl
+%attr(755,root,root) %{_libdir}/libcurl.so.*.*.*
+%{_mandir}/man1/curl.1*
 
 %files devel
 %defattr(644,root,root,755)
-%doc CHANGES README docs/TheArtOfHttpScripting
-%doc docs/{BUGS,CONTRIBUTE,FAQ,FEATURES,INTERNALS,MANUAL,README*,RESOURCES,THANKS,TODO}
-%attr(755,root,root) %{_bindir}/%{name}-config
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*
-%{_mandir}/man3/*
+%doc docs/{CONTRIBUTE,INTERNALS,LICENSE-MIXING,RESOURCES}
+%attr(755,root,root) %{_bindir}/curl-config
+%attr(755,root,root) %{_libdir}/libcurl.so
+%{_libdir}/libcurl.la
+%{_includedir}/curl
+%{_mandir}/man1/curl-config.1*
+%{_mandir}/man3/*curl*.3*
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libcurl.a
