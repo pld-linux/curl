@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without  ssl	# without SSL support
+%bcond_without	ssl	# without SSL support
 #
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Summary(es):	Busca URL (soporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP y HTTPS)
