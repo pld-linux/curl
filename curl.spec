@@ -6,7 +6,7 @@ Summary(ru):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk):	Утил╕та для отримання файл╕в з сервер╕в FTP, HTTP та ╕нших
 Name:		curl
 Version:	7.10
-Release:	1
+Release:	2
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
@@ -14,6 +14,7 @@ Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-no_strip.patch
 URL:		http://curl.haxx.se/
 %{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
+Requires:	openssl-tools
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libcurl2
 
@@ -142,7 +143,11 @@ Bibliotecas estАticas para desenvolvimento com o curl.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+rm -f $RPM_BUILD_ROOT%{_datadir}/curl/curl-ca-bundle.crt
+ln -s %{_datadir}/ssl/ca-bundle.crt  $RPM_BUILD_ROOT%{_datadir}/curl/curl-ca-bundle.crt
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -154,6 +159,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
+%{_datadir}/curl
 %{_mandir}/man1/*
 
 %files devel
