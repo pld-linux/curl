@@ -26,6 +26,17 @@ useful capabilities, like proxy support, user authentication, FTP upload,
 HTTP post, and file transfer resume. Note that while cURL also supports the
 SSL protocol, this version is compiled without SSL (https:) support.
 
+%description -l pl
+cURL jest narzêdziem do ¶ci±gania plików o sk³adni URL. Obs³uguje FTP, HTTP,
+HTTPS, GOPHER, TELNET, DICT, FILE i LDAP. cURL obs³uguje równie¿ HTTP POST,
+HTTP PUT, za³adowywanie (uploading) FTP, za³adowywanie HTTP oparte na 
+formularzu, serwery proksy, ciasteczka, autoryzacja u¿ytkownik/has³o oraz 
+wiele innych u¿ytecznych sztuczek. Curla u¿ywa siê g³ównie wtedy, kiedy chce 
+siê automatycznie ¶ci±gn±æ lub wys³aæ pliki z/na serwer u¿ywaj±c jednego
+z dostêpnych protoko³ów.
+Chocia¿ cURL obs³uguje równie¿ protokó³ SSL, wersja ta jest skompilowana
+bez obs³ugi SSL (https:).
+
 %prep
 %setup -q 
 
