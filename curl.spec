@@ -3,7 +3,7 @@ Summary(es):	Busca URL (soporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP y HTTPS)
 Summary(pl):	Narzêdzie do ¶ci±gania plików z serwerów (FTP, HTTP i innych)
 Summary(pt_BR):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS)
 Name:		curl
-Version:	7.9.2
+Version:	7.9.3
 Release:	2
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
@@ -12,7 +12,6 @@ Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-no_strip.patch
-Patch1:		%{name}-readtimeout-fix.patch
 URL:		http://curl.haxx.se/
 %{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -109,7 +108,6 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %prep
 %setup -q
 %patch0 -p1
-%patch1	-p1
 
 %build
 %configure \
