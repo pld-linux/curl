@@ -1,19 +1,27 @@
+#
+# Conditional build:
+# _without_ssl	- without SSL support
+#
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
-Summary(pl):	narzЙdziem do ╤ci╠gania plikСw z serwerСw (FTP, HTTP i innych)
+Summary(es):	Busca URL (soporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP y HTTPS)
+Summary(pl):	NarzЙdzie do ╤ci╠gania plikСw z serwerСw (FTP, HTTP i innych)
+Summary(pt_BR):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS)
+Summary(ru):	Утилита для получения файлов с серверов FTP, HTTP и других
+Summary(uk):	Утил╕та для отримання файл╕в з сервер╕в FTP, HTTP та ╕нших
 Name:		curl
-Version:	7.8
-Release:	3
+Version:	7.10.5
+Release:	1
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
-Group(de):	Applikationen/Netzwerkwesen
-Group(pl):	Aplikacje/Sieciowe
-Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.gz
-Patch0:		%{name}-so.patch
-Patch1:		%{name}-no_strip.patch
+Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
+# Source0-md5:	cef8a0c26ca7f4ff6b844d9f69b533f1
+Patch0:		%{name}-no_strip.patch
 URL:		http://curl.haxx.se/
-%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
+%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6j}
+Requires:	openssl-tools >= 0.9.6j
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	libcurl2
 
 %description
 cURL is a tool for getting files with URL syntax, supporting FTP,
@@ -29,6 +37,14 @@ to work without user interaction or any kind of interactivity. cURL
 offers many useful capabilities, like proxy support, user
 authentication, FTP upload, HTTP post, and file transfer resume.
 
+%description -l es
+Curl es un cliente para bajar documentos/archivos de servidores usando
+uno de los protocolos soportados. EstА proyectado para funcionar sin
+interacciСn del usuario.
+
+Curl trabaja con proxy, autenticaciСn, ftp put, HTTP post, y puede
+continuar transferencias interrumpidas, y ademАs...
+
 %description -l pl
 cURL jest narzЙdziem do ╤ci╠gania plikСw o skЁadni URL. ObsЁuguje FTP,
 HTTP, HTTPS, GOPHER, TELNET, DICT, FILE i LDAP. cURL obsЁuguje rСwnie©
@@ -38,54 +54,103 @@ u©ytkownik/hasЁo oraz wiele innych u©ytecznych sztuczek. Curla u©ywa
 siЙ gЁСwnie wtedy, kiedy chce siЙ automatycznie ╤ci╠gn╠Ф lub wysЁaФ
 pliki z/na serwer u©ywaj╠c jednego z dostЙpnych protokoЁСw.
 
+Uwaga: ten pakiet wspiera takze SSL.
+
+%description -l pt_BR
+Curl И um cliente para baixar/enviar arquivos de/para servidores
+usando um dos protocolos suportados. и projetado para funcionar sem a
+interaГЦo do usuАrio.
+
+Curl trabalha com proxy, autenticaГЦo, ftp put, HTTP post, e pode
+continuar transferЙncias interrompidas, e mais...
+
+%description -l ru
+curl - это клиент с множеством поддерживаемых протоколов для получения
+файлов с серверов, спроектированный для работы как в неинтерактивном
+режиме, так и с возможностью диалога с пользователем.
+
+curl поддерживает много полезных возможностей, среди которых поддержка
+прокси, авторизация пользователя, закачивание по FTP, поддержка HTTP
+POST, восстановление прерванной пересылки и многое другое.
+
+curl - це кл╕╓нт з багатьма п╕дтримуваними протоколами для отримання
+файл╕в з сервер╕в, спроектований для роботи як в не╕нтерактивному
+режим╕, так ╕ з можлив╕стю д╕алогу з користувачем.
+
+curl п╕дтриму╓ багато корисних можливостей, серед яких п╕дтримка
+прокс╕, авторизац╕я користувача, в╕двантаження по FTP, HTTP POST,
+в╕дновлення перервано╖ пересилки та багато ╕ншого.
+
 %package devel
 Summary:	Header files and development documentation for curl library
 Summary(pl):	Pliki nagЁСwkowe i dokumentacja do biblioteki curl
+Summary(pt_BR):	Arquivos de cabeГalho e bibliotecas de desenvolvimento
+Summary(ru):	Файлы для разработки с использованием библиотеки curl
+Summary(uk):	Файли для розробки з використанням б╕бл╕отеки curl
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
+Obsoletes:	libcurl2-devel
 
 %description devel
 Header files and development documentation for curl library.
 
-%description -l pl devel
+%description devel -l pl
 Pliki nagЁСwkowe i dokumentacja do biblioteki curl.
+
+%description devel -l pt_BR
+Arquivos de cabeГalho e bibliotecas de desenvolvimento.
+
+%description devel -l ru
+Этот пакет содержит файлы, необходимые для разработки программ с
+использованием библиотеки curl.
+
+%description devel -l uk
+Цей пакет м╕стить файли, необх╕дн╕ для розробки програм з
+використанням б╕бл╕отеки curl.
 
 %package static
 Summary:	Static version of curl library
 Summary(pl):	Statyczna wersja biblioteki curl
+Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com o curl
+Summary(ru):	Статические библиотеки для разработки с использованием библиотеки curl
+Summary(uk):	Статичн╕ б╕бл╕отеки для розробки з використанням б╕бл╕отеки curl
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
 %description static
 Static version of curl library.
 
-%description -l pl static
+%description static -l pl
 Statyczna wersja biblioteki curl.
+
+%description static -l pt_BR
+Bibliotecas estАticas para desenvolvimento com o curl.
+
+%description static -l ru
+Этот пакет содержит статическую библиотеку для разработки программ с
+использованием библиотеки curl.
+
+%description static -l uk
+Цей пакет м╕стить статичну б╕бл╕отеку для розробки програм з
+використанням б╕бл╕отеки curl.
 
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %configure \
 	%{!?_without_ssl:--with-ssl=%{_prefix}} \
+	%{!?_without_ssl:--with-ca-bundle=/usr/share/ssl/ca-bundle.crt} \
 	--with-ipv6
 
-%{__make} 
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
-
-gzip -9nf docs/{BUGS,RESOURCES,CONTRIBUTE,FEATURES,FAQ,INTERNALS,README*,TODO,TheArtOfHttpScripting}
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -95,18 +160,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc docs/*.gz
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
+%doc CHANGES README docs/TheArtOfHttpScripting
+%doc docs/{BUGS,CONTRIBUTE,FAQ,FEATURES,INTERNALS,MANUAL,README*,RESOURCES,THANKS,TODO}
 %attr(755,root,root) %{_bindir}/%{name}-config
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/lib*.la
-%{_mandir}/man3/*
+%{_libdir}/lib*.la
 %{_includedir}/*
+%{_mandir}/man3/*
 
 %files static
 %defattr(644,root,root,755)
