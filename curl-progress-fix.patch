@@ -1,0 +1,12 @@
+--- lib/progress.c	Sun Jun 24 20:41:34 2001
++++ lib/progress.c.mis	Tue Jul  3 11:32:28 2001
+@@ -97,7 +97,8 @@
+   if(!(data->progress.flags & PGRS_HIDE)) {
+     data->progress.lastshow=0;
+     Curl_pgrsUpdate(conn); /* the final (forced) update */
+-    fprintf(data->err, "\n");
++    if (!data->progress.callback)
++	fprintf(data->err, "\n");
+   }
+ }
+ 
