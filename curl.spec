@@ -18,8 +18,8 @@ Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
 # Source0-md5:	19f2f77279cd5d3026c71997463db791
 Patch0:		%{name}-no_strip.patch
 URL:		http://curl.haxx.se/
-%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.7}
-Requires:	openssl-tools >= 0.9.7
+%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.7c}
+Requires:	openssl-tools >= 0.9.7c
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libcurl2
 
