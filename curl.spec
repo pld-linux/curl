@@ -136,6 +136,7 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %build
 %configure \
 	%{!?_without_ssl:--with-ssl=%{_prefix}} \
+	--with-ca-bundle=/usr/share/ssl/ca-bundle.crt \
 	--with-ipv6
 
 %{__make}
@@ -145,9 +146,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-rm -f $RPM_BUILD_ROOT%{_datadir}/curl/curl-ca-bundle.crt
-ln -s %{_datadir}/ssl/ca-bundle.crt  $RPM_BUILD_ROOT%{_datadir}/curl/curl-ca-bundle.crt
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -159,7 +157,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%{_datadir}/curl
 %{_mandir}/man1/*
 
 %files devel
