@@ -165,7 +165,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc docs/{BUGS,CONTRIBUTE,FAQ,FEATURES,INTERNALS,MANUAL,README*,RESOURCES,THANKS,TODO}
 %attr(755,root,root) %{_bindir}/%{name}-config
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/lib*.la
+%{_libdir}/lib*.la
 %{_includedir}/*
 %{_mandir}/man3/*
 
