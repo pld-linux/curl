@@ -15,9 +15,10 @@ License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
+# Source0-md5:	cef8a0c26ca7f4ff6b844d9f69b533f1
 Patch0:		%{name}-no_strip.patch
 URL:		http://curl.haxx.se/
-%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
+%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6j}
 Requires:	openssl-tools
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libcurl2
