@@ -1,0 +1,23 @@
+diff -ur curl-7.9.1.orig/lib/ftp.c curl-7.9.1/lib/ftp.c
+--- curl-7.9.1.orig/lib/ftp.c	Thu Nov  1 07:47:22 2001
++++ curl-7.9.1/lib/ftp.c	Sat Dec  1 05:34:31 2001
+@@ -1915,7 +1915,7 @@
+  * NOTE: we build the command in a fixed-length buffer, which sets length
+  * restrictions on the command!
+  */
+-CURLcode Curl_ftpsendf(struct connectdata *conn,
++size_t Curl_ftpsendf(struct connectdata *conn,
+                        const char *fmt, ...)
+ {
+   size_t bytes_written;
+--- curl-7.9.2/lib/ftp.h.orig	Mon Dec 31 11:15:28 2001
++++ curl-7.9.2/lib/ftp.h	Mon Dec 31 11:15:43 2001
+@@ -28,7 +28,7 @@
+ CURLcode Curl_ftp_connect(struct connectdata *conn);
+ CURLcode Curl_ftp_disconnect(struct connectdata *conn);
+ 
+-CURLcode Curl_ftpsendf(struct connectdata *, const char *fmt, ...);
++size_t Curl_ftpsendf(struct connectdata *, const char *fmt, ...);
+ 
+ /* The kerberos stuff needs this: */
+ int Curl_GetFTPResponse(char *buf, struct connectdata *conn,
