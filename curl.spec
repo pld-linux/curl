@@ -1,6 +1,6 @@
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Name:		curl
-Version:	7.5.1
+Version:	7.5.2
 Release:	1
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
@@ -83,10 +83,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc docs/*.gz
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_libdir}/lib*.so.*
 %{_mandir}/man1/*
-%doc docs/*.gz
 
 %files devel
 %defattr(644,root,root,755)
