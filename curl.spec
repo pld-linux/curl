@@ -142,7 +142,6 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %patch1 -p1
 
 %build
-#cp -f /usr/share/automake/config.* .
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
