@@ -49,7 +49,7 @@ Curl es un cliente para bajar documentos/archivos de servidores usando
 uno de los protocolos soportados. Está proyectado para funcionar sin
 interacción del usuario.
 
-Curl trabaja con proxy, autenticación, ftp put, HTTP post, y puede
+Curl trabaja con proxy, autenticación, FTP put, HTTP post, y puede
 continuar transferencias interrumpidas, y además...
 
 %description -l pl
@@ -67,7 +67,7 @@ Curl é um cliente para baixar/enviar arquivos de/para servidores
 usando um dos protocolos suportados. É projetado para funcionar sem a
 interação do usuário.
 
-Curl trabalha com proxy, autenticação, ftp put, HTTP post, e pode
+Curl trabalha com proxy, autenticação, FTP put, HTTP post, e pode
 continuar transferências interrompidas, e mais...
 
 %description -l ru
