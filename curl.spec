@@ -1,6 +1,7 @@
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
+Summary(pl):	narzêdziem do ¶ci±gania plików z serwerów (FTP, HTTP i innych)
 Name:		curl
-Version:	7.5.2
+Version:	7.6
 Release:	1
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
@@ -47,6 +48,9 @@ Requires:	%{name} = %{version}
 %description devel
 Header files and development documentation for curl library.
 
+%description -l pl devel
+Pliki nag³ówkowe i dokumentacja do biblioteki curl.
+
 %package static
 Summary:	Static version of curl library
 Summary(pl):	Statyczna wersja biblioteki curl
@@ -59,6 +63,8 @@ Requires:	%{name}-devel = %{version}
 %description static
 Static version of curl library
 
+%description -l pl static
+Statyczna wersja biblioteki curl.
 
 %prep
 %setup -q 
