@@ -1,0 +1,12 @@
+diff -Nur --exclude *~ curl-7.8/curl-config.in curl-7.8.new/curl-config.in
+--- curl-7.8/curl-config.in	Sat Jun  2 20:59:30 2001
++++ curl-7.8.new/curl-config.in	Wed Jun 27 22:23:19 2001
+@@ -77,7 +77,7 @@
+        	;;
+ 
+     --libs)
+-       	echo @LDFLAGS@ @LIBS@
++       	echo @LIBS@
+        	;;
+ 
+     *)
