@@ -4,7 +4,7 @@
 %bcond_without	heimdal	# without HEIMDAL support
 #
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
-Summary(es):	Busca URL (soporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP y HTTPS)
+Summary(es):	Un cliente para bajar archivos de servidores (FTP, HTTP, y otros)
 Summary(pl):	Narzêdzie do ¶ci±gania plików z serwerów (FTP, HTTP i innych)
 Summary(pt_BR):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS)
 Summary(ru):	õÔÉÌÉÔÁ ÄÌÑ ĞÏÌÕŞÅÎÉÑ ÆÁÊÌÏ× Ó ÓÅÒ×ÅÒÏ× FTP, HTTP É ÄÒÕÇÉÈ
@@ -43,14 +43,6 @@ Dict servers, using any of the supported protocols. cURL is designed
 to work without user interaction or any kind of interactivity. cURL
 offers many useful capabilities, like proxy support, user
 authentication, FTP upload, HTTP post, and file transfer resume.
-
-%description -l es
-Curl es un cliente para bajar documentos/archivos de servidores usando
-uno de los protocolos soportados. Está proyectado para funcionar sin
-interacción del usuario.
-
-Curl trabaja con proxy, autenticación, FTP put, HTTP post, y puede
-continuar transferencias interrumpidas, y además...
 
 %description -l pl
 cURL jest narzêdziem do ¶ci±gania plików o sk³adni URL. Obs³uguje FTP,
