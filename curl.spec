@@ -1,8 +1,8 @@
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Summary(pl):	narzêdziem do ¶ci±gania plików z serwerów (FTP, HTTP i innych)
 Name:		curl
-Version:	7.6
-Release:	2
+Version:	7.6.1
+Release:	1
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
