@@ -1,8 +1,8 @@
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Name:		curl
-Version:	6.4
+Version:	6.5.2
 Release:	1
-Copyright:	MPL
+License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
