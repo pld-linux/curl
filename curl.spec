@@ -10,16 +10,19 @@ Summary(ru):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk):	Утил╕та для отримання файл╕в з сервер╕в FTP, HTTP та ╕нших
 Name:		curl
 Version:	7.12.1
-Release:	1
+Release:	2
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
 # Source0-md5:	ffa1386d7473fdc419441cb0156d0005
 Patch0:		%{name}-no_strip.patch
+Patch1:		%{name}-ac.patch
 URL:		http://curl.haxx.se/
+BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libidn-devel >= 0.4.1
+BuildRequires:	heimdal-devel
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
 Requires:	openssl-tools >= 0.9.7d
 Requires:	libidn >= 0.4.1
@@ -141,12 +144,16 @@ Bibliotecas estАticas para desenvolvimento com o curl.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 cp -f /usr/share/automake/config.* .
+%{__autoconf}
+%{__autoheader}
 %configure \
 	%{?with_ssl:--with-ssl=%{_prefix}} \
 	%{?with_ssl:--with-ca-bundle=/usr/share/ssl/ca-bundle.crt} \
+	--with-gssapi-includes=%{_includedir} \
 	--with-ipv6
 
 %{__make}
