@@ -9,7 +9,7 @@ Group(pl):	Aplikacje/Sieciowe
 Source:		http://curl.haxx.nu/stuff/%{name}-%{version}.tar.gz
 URL:		http://curl.haxx.nu/
 BuildRequires:	openssl-devel
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 cURL is a tool for getting files with URL syntax, supporting FTP, HTTP,
