@@ -8,8 +8,6 @@ Release:	1
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
-Group(de):	Applikationen/Netzwerkwesen
-Group(pl):	Aplikacje/Sieciowe
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-no_strip.patch
 URL:		http://curl.haxx.se/
@@ -63,13 +61,6 @@ Summary:	Header files and development documentation for curl library
 Summary(pl):	Pliki nagЁСwkowe i dokumentacja do biblioteki curl
 Summary(pt_BR):	Arquivos de cabeГalho e bibliotecas de desenvolvimento
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Obsoletes:	libcurl2-devel
 
@@ -87,13 +78,6 @@ Summary:	Static version of curl library
 Summary(pl):	Statyczna wersja biblioteki curl
 Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com o curl
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
