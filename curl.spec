@@ -1,6 +1,6 @@
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Name:		curl
-Version:	6.5.2
+Version:	7.3
 Release:	1
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
@@ -23,9 +23,7 @@ cURL is a tool for getting files from FTP, HTTP, Gopher, Telnet, and
 Dict servers, using any of the supported protocols. cURL is designed
 to work without user interaction or any kind of interactivity. cURL
 offers many useful capabilities, like proxy support, user
-authentication, FTP upload, HTTP post, and file transfer resume. Note
-that while cURL also supports the SSL protocol, this version is
-compiled without SSL (https:) support.
+authentication, FTP upload, HTTP post, and file transfer resume. 
 
 %description -l pl
 cURL jest narzêdziem do ¶ci±gania plików o sk³adni URL. Obs³uguje FTP,
@@ -34,30 +32,64 @@ HTTP POST, HTTP PUT, za³adowywanie (uploading) FTP, za³adowywanie HTTP
 oparte na formularzu, serwery proksy, ciasteczka, autoryzacja
 u¿ytkownik/has³o oraz wiele innych u¿ytecznych sztuczek. Curla u¿ywa
 siê g³ównie wtedy, kiedy chce siê automatycznie ¶ci±gn±æ lub wys³aæ
-pliki z/na serwer u¿ywaj±c jednego z dostêpnych protoko³ów. Chocia¿
-cURL obs³uguje równie¿ protokó³ SSL, wersja ta jest skompilowana bez
-obs³ugi SSL (https:).
+pliki z/na serwer u¿ywaj±c jednego z dostêpnych protoko³ów. 
+
+%package devel
+Summary:	Header files and development documentation for curl library
+Summary(pl):	Pliki nag³ówkowe i dokumentacja do biblioteki curl
+Group:		Development/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description devel
+Header files and development documentation for curl library.
+
+%package static
+Summary:	Static version of curl library
+Summary(pl):    Statyczna wersja biblioteki curl
+Group:		Development/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
+
+%description static
+Static version of curl library
+
 
 %prep
 %setup -q 
 
 %build
 LDFLAGS="-s"; export LDFLAGS
-%configure \
-	--with-ssl=/usr
+%configure --with-ssl=/usr
 %{__make} 
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__make} DESTDIR=$RPM_BUILD_ROOT install
+gzip -9nf docs/{BUGS,RESOURCES,CONTRIBUTE,FEATURES,FAQ,INTERNALS,README*,TODO,TheArtOfHttpScripting}
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
-	README* CHANGES CONTRIBUTE FAQ LEGAL MPL-1.0.txt RESOURCES TODO
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post	-p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
 %files
 %defattr(644,root,root,755)
-%doc *.gz
-%attr(755,root,root) %{_bindir}/curl
+%attr(755,root,root) %{_bindir}/%{name}
+%attr(755,root,root) %{_libdir}/lib*.so.*
 %{_mandir}/man1/*
+%doc docs/*.gz
+
+%files devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.la
+%{_mandir}/man3/*
+%{_includedir}/*
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
