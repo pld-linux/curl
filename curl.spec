@@ -136,7 +136,7 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %build
 %configure \
 	%{!?_without_ssl:--with-ssl=%{_prefix}} \
-	--with-ca-bundle=/usr/share/ssl/ca-bundle.crt \
+	%{!?_without_ssl:--with-ca-bundle=/usr/share/ssl/ca-bundle.crt} \
 	--with-ipv6
 
 %{__make}
