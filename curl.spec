@@ -1,14 +1,14 @@
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Name:		curl
-Version:	7.5
+Version:	7.5.1
 Release:	1
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
-Source0:	http://curl.haxx.nu/stuff/%{name}-%{version}.tar.gz
-URL:		http://curl.haxx.nu/
+Source0:	http://curl.haxx.se/stuff/%{name}-%{version}.tar.gz
+URL:		http://curl.haxx.se/
 BuildRequires:	openssl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
