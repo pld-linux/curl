@@ -83,7 +83,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf docs/{BUGS,RESOURCES,CONTRIBUTE,FEATURES,FAQ,INTERNALS,README*,TODO,TheArtOfHttpScripting}
+gzip -9nf CHANGES LEGAL README docs/TheArtOfHttpScripting
+gzip -9nf docs/{BUGS,CONTRIBUTE,FAQ,FEATURES,INTERNALS,MANUAL,README*,RESOURCES,THANKS,TODO}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -93,7 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc docs/*.gz
+%doc *.gz docs/*.gz
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_mandir}/man1/*
