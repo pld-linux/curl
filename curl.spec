@@ -9,13 +9,13 @@ Summary(pt_BR):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS
 Summary(ru):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk):	Утил╕та для отримання файл╕в з сервер╕в FTP, HTTP та ╕нших
 Name:		curl
-Version:	7.11.1
+Version:	7.11.2
 Release:	1
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
-# Source0-md5:	c2af7c3364a1a8839516f74961b6bd11
+# Source0-md5:	542fbdafd2fb051477fa544770b566de
 Patch0:		%{name}-no_strip.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	automake
