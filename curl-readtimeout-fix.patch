@@ -1,0 +1,31 @@
+--- lib/transfer.c	Wed Sep 12 14:02:12 2001
++++ lib/transfer.c.mis	Sat Oct 27 15:28:06 2001
+@@ -287,6 +287,7 @@
+       interval.tv_sec = 1;
+       interval.tv_usec = 0;
+ 
++      start = Curl_tvnow();
+       switch (select (maxfd, &readfd, &writefd, NULL, &interval)) {
+       case -1:			/* select() error, stop reading */
+ #ifdef EINTR
+--- lib/ftp.c	Mon Sep 24 14:37:19 2001
++++ lib/ftp.c.mis	Sat Oct 27 15:49:30 2001
+@@ -190,15 +190,9 @@
+   if (ftpcode)
+     *ftpcode = 0; /* 0 for errors */
+ 
+-  if(data->set.timeout) {
+-    /* if timeout is requested, find out how much remaining time we have */
+-    timeout = data->set.timeout - /* timeout time */
+-      (Curl_tvlong(Curl_tvnow()) - Curl_tvlong(conn->now)); /* spent time */
+-    if(timeout <=0 ) {
+-      failf(data, "Transfer aborted due to timeout");
+-      return -SELECT_TIMEOUT; /* already too little time */
+-    }
+-  }
++  if(data->set.timeout) 
++    timeout = data->set.timeout;
++  
+ 
+   FD_ZERO (&readfd);		/* clear it */
+   FD_SET (sockfd, &readfd);     /* read socket */
