@@ -19,8 +19,10 @@ Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-no_strip.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	automake
+BuildRequires:	libidn-devel >= 0.4.1
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
 Requires:	openssl-tools >= 0.9.7d
+Requires:	libidn >= 0.4.1
 Obsoletes:	libcurl2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -88,7 +90,8 @@ Summary(pt_BR):	Arquivos de cabeГalho e bibliotecas de desenvolvimento
 Summary(ru):	Файлы для разработки с использованием библиотеки curl
 Summary(uk):	Файли для розробки з використанням б╕бл╕отеки curl
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
+Requires:	libidn-devel >= 0.4.1
 %{?with_ssl:Requires:	openssl-devel >= 0.9.7c}
 Obsoletes:	libcurl2-devel
 
@@ -116,7 +119,7 @@ Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com o curl
 Summary(ru):	Статические библиотеки для разработки с использованием библиотеки curl
 Summary(uk):	Статичн╕ б╕бл╕отеки для розробки з використанням б╕бл╕отеки curl
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of curl library.
@@ -140,7 +143,7 @@ Bibliotecas estАticas para desenvolvimento com o curl.
 %patch0 -p1
 
 %build
-install /usr/share/automake/config.* .
+cp -f /usr/share/automake/config.* .
 %configure \
 	%{?with_ssl:--with-ssl=%{_prefix}} \
 	%{?with_ssl:--with-ca-bundle=/usr/share/ssl/ca-bundle.crt} \
