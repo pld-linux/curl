@@ -67,10 +67,10 @@ Obsoletes:	libcurl2-devel
 %description devel
 Header files and development documentation for curl library.
 
-%description -l pl devel
+%description devel -l pl
 Pliki nag³ówkowe i dokumentacja do biblioteki curl.
 
-%description -l pt_BR devel
+%description devel -l pt_BR
 Arquivos de cabeçalho e bibliotecas de desenvolvimento.
 
 %package static
@@ -83,10 +83,10 @@ Requires:	%{name}-devel = %{version}
 %description static
 Static version of curl library.
 
-%description -l pl static
+%description static -l pl
 Statyczna wersja biblioteki curl.
 
-%description -l pt_BR static
+%description static -l pt_BR
 Bibliotecas estáticas para desenvolvimento com o curl.
 
 %prep
@@ -98,7 +98,7 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 	%{!?_without_ssl:--with-ssl=%{_prefix}} \
 	--with-ipv6
 
-%{__make} 
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
