@@ -72,7 +72,7 @@ Statyczna wersja biblioteki curl.
 %build
 %configure \
 %{!?_without_ssl:--with-ssl=%{_prefix}} \
-	----with-ipv6
+	--with-ipv6
 
 %{__make} 
 
