@@ -2,9 +2,11 @@ Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Summary(es):	Busca URL (soporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP y HTTPS)
 Summary(pl):	NarzЙdzie do ╤ci╠gania plikСw z serwerСw (FTP, HTTP i innych)
 Summary(pt_BR):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS)
+Summary(ru):	Утилита для получения файлов с серверов FTP, HTTP и других
+Summary(uk):	Утил╕та для отримання файл╕в з сервер╕в FTP, HTTP та ╕нших
 Name:		curl
 Version:	7.9.5
-Release:	1
+Release:	3
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
@@ -56,10 +58,29 @@ interaГЦo do usuАrio.
 Curl trabalha com proxy, autenticaГЦo, ftp put, HTTP post, e pode
 continuar transferЙncias interrompidas, e mais...
 
+%description -l ru
+curl - это клиент с множеством поддерживаемых протоколов для получения
+файлов с серверов, спроектированный для работы как в неинтерактивном
+режиме, так и с возможностью диалога с пользователем.
+
+curl поддерживает много полезных возможностей, среди которых поддержка
+прокси, авторизация пользователя, закачивание по FTP, поддержка HTTP
+POST, восстановление прерванной пересылки и многое другое.
+
+curl - це кл╕╓нт з багатьма п╕дтримуваними протоколами для отримання
+файл╕в з сервер╕в, спроектований для роботи як в не╕нтерактивному
+режим╕, так ╕ з можлив╕стю д╕алогу з користувачем.
+
+curl п╕дтриму╓ багато корисних можливостей, серед яких п╕дтримка
+прокс╕, авторизац╕я користувача, в╕двантаження по FTP, HTTP POST,
+в╕дновлення перервано╖ пересилки та багато ╕ншого.
+
 %package devel
 Summary:	Header files and development documentation for curl library
 Summary(pl):	Pliki nagЁСwkowe i dokumentacja do biblioteki curl
 Summary(pt_BR):	Arquivos de cabeГalho e bibliotecas de desenvolvimento
+Summary(ru):	Файлы для разработки с использованием библиотеки curl
+Summary(uk):	Файли для розробки з використанням б╕бл╕отеки curl
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Obsoletes:	libcurl2-devel
@@ -73,10 +94,20 @@ Pliki nagЁСwkowe i dokumentacja do biblioteki curl.
 %description devel -l pt_BR
 Arquivos de cabeГalho e bibliotecas de desenvolvimento.
 
+%description devel -l ru
+Этот пакет содержит файлы, необходимые для разработки программ с
+использованием библиотеки curl.
+
+%description devel -l uk
+Цей пакет м╕стить файли, необх╕дн╕ для розробки програм з
+використанням б╕бл╕отеки curl.
+
 %package static
 Summary:	Static version of curl library
 Summary(pl):	Statyczna wersja biblioteki curl
 Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com o curl
+Summary(ru):	Статические библиотеки для разработки с использованием библиотеки curl
+Summary(uk):	Статичн╕ б╕бл╕отеки для розробки з використанням б╕бл╕отеки curl
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
@@ -88,6 +119,14 @@ Statyczna wersja biblioteki curl.
 
 %description static -l pt_BR
 Bibliotecas estАticas para desenvolvimento com o curl.
+
+%description static -l ru
+Этот пакет содержит статическую библиотеку для разработки программ с
+использованием библиотеки curl.
+
+%description static -l uk
+Цей пакет м╕стить статичну б╕бл╕отеку для розробки програм з
+використанням б╕бл╕отеки curl.
 
 %prep
 %setup -q
