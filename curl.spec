@@ -5,6 +5,7 @@ Release:	1
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
+Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Source0:	http://curl.haxx.nu/stuff/%{name}-%{version}.tar.gz
 URL:		http://curl.haxx.nu/
@@ -23,7 +24,7 @@ cURL is a tool for getting files from FTP, HTTP, Gopher, Telnet, and
 Dict servers, using any of the supported protocols. cURL is designed
 to work without user interaction or any kind of interactivity. cURL
 offers many useful capabilities, like proxy support, user
-authentication, FTP upload, HTTP post, and file transfer resume. 
+authentication, FTP upload, HTTP post, and file transfer resume.
 
 %description -l pl
 cURL jest narzêdziem do ¶ci±gania plików o sk³adni URL. Obs³uguje FTP,
@@ -32,12 +33,13 @@ HTTP POST, HTTP PUT, za³adowywanie (uploading) FTP, za³adowywanie HTTP
 oparte na formularzu, serwery proksy, ciasteczka, autoryzacja
 u¿ytkownik/has³o oraz wiele innych u¿ytecznych sztuczek. Curla u¿ywa
 siê g³ównie wtedy, kiedy chce siê automatycznie ¶ci±gn±æ lub wys³aæ
-pliki z/na serwer u¿ywaj±c jednego z dostêpnych protoko³ów. 
+pliki z/na serwer u¿ywaj±c jednego z dostêpnych protoko³ów.
 
 %package devel
 Summary:	Header files and development documentation for curl library
 Summary(pl):	Pliki nag³ówkowe i dokumentacja do biblioteki curl
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -47,8 +49,9 @@ Header files and development documentation for curl library.
 
 %package static
 Summary:	Static version of curl library
-Summary(pl):    Statyczna wersja biblioteki curl
+Summary(pl):	Statyczna wersja biblioteki curl
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
@@ -61,13 +64,15 @@ Static version of curl library
 %setup -q 
 
 %build
-LDFLAGS="-s"; export LDFLAGS
-%configure --with-ssl=/usr
+%configure \
+	--with-ssl=/usr
 %{__make} 
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} DESTDIR=$RPM_BUILD_ROOT install
+
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
+
 gzip -9nf docs/{BUGS,RESOURCES,CONTRIBUTE,FEATURES,FAQ,INTERNALS,README*,TODO,TheArtOfHttpScripting}
 
 %clean
