@@ -3,8 +3,8 @@ Summary(es):	Busca URL (soporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP y HTTPS)
 Summary(pl):	Narzêdzie do ¶ci±gania plików z serwerów (FTP, HTTP i innych)
 Summary(pt_BR):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS)
 Name:		curl
-Version:	7.9.3
-Release:	2
+Version:	7.9.4
+Release:	1
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
