@@ -1,3 +1,7 @@
+#
+# Conditional build:
+# _without_ssl	- without SSL support
+#
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Summary(es):	Busca URL (soporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP y HTTPS)
 Summary(pl):	NarzЙdzie do ╤ci╠gania plikСw z serwerСw (FTP, HTTP i innych)
@@ -5,12 +9,12 @@ Summary(pt_BR):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS
 Summary(ru):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk):	Утил╕та для отримання файл╕в з сервер╕в FTP, HTTP та ╕нших
 Name:		curl
-Version:	7.10.2
+Version:	7.10.3
 Release:	1
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
-Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.gz
+Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-no_strip.patch
 URL:		http://curl.haxx.se/
 %{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
