@@ -1,5 +1,5 @@
 %define         ver     7.7.4 
-%define         prerel  pre1
+%define         prerel  pre2
  
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Summary(pl):	narzêdziem do ¶ci±gania plików z serwerów (FTP, HTTP i innych)
@@ -12,7 +12,6 @@ Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Source0:	http://curl.haxx.se/stuff/%{name}-%{ver}-%{prerel}.tar.gz
-Patch0:		%{name}-bugfix.patch
 URL:		http://curl.haxx.se/
 %{!?bcond_off_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -72,7 +71,6 @@ Statyczna wersja biblioteki curl.
 
 %prep
 %setup -q -n %{name}-%{ver}-%{prerel}
-%patch0
 
 %build
 %configure \
