@@ -2,7 +2,7 @@ Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Summary(pl):	narzêdziem do ¶ci±gania plików z serwerów (FTP, HTTP i innych)
 Name:		curl
 Version:	7.8
-Release:	3
+Release:	4
 License:	MPL
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
@@ -11,6 +11,7 @@ Group(pl):	Aplikacje/Sieciowe
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-so.patch
 Patch1:		%{name}-no_strip.patch
+Patch2:		%{name}-progress-fix.patch
 URL:		http://curl.haxx.se/
 %{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -72,6 +73,7 @@ Statyczna wersja biblioteki curl.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p0
 
 %build
 %configure \
