@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_without	ssl	# without SSL support
+%bcond_without	heimdal	# without HEIMDAL support
 #
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Summary(es):	Busca URL (soporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP y HTTPS)
@@ -22,7 +23,7 @@ URL:		http://curl.haxx.se/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libidn-devel >= 0.4.1
-BuildRequires:	heimdal-devel
+%{?with_heimdal:BuildRequires:	heimdal-devel}
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
 Requires:	openssl-tools >= 0.9.7d
 Requires:	libidn >= 0.4.1
@@ -153,7 +154,7 @@ cp -f /usr/share/automake/config.* .
 %configure \
 	%{?with_ssl:--with-ssl=%{_prefix}} \
 	%{?with_ssl:--with-ca-bundle=/usr/share/ssl/ca-bundle.crt} \
-	--with-gssapi-includes=%{_includedir} \
+	%{?with_heimdal:--with-gssapi-includes=%{_includedir}} \
 	--with-ipv6
 
 %{__make}
