@@ -53,8 +53,7 @@ oparte na formularzu, serwery proksy, ciasteczka, autoryzacja
 u¿ytkownik/has³o oraz wiele innych u¿ytecznych sztuczek. Curla u¿ywa
 siê g³ównie wtedy, kiedy chce siê automatycznie ¶ci±gn±æ lub wys³aæ
 pliki z/na serwer u¿ywaj±c jednego z dostêpnych protoko³ów.
-
-Uwaga: ten pakiet wspiera takze SSL.
+%{!?_without_ssl:Ten pakiet obs³uguje tak¿e SSL.}
 
 %description -l pt_BR
 Curl é um cliente para baixar/enviar arquivos de/para servidores
