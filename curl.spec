@@ -1,6 +1,6 @@
 #
 # Conditional build:
-# _without_ssl	- without SSL support
+%bcond_without  ssl	# without SSL support
 #
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Summary(es):	Busca URL (soporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP y HTTPS)
@@ -19,10 +19,10 @@ Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-no_strip.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	automake
-%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.7c}
+%{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7c}
 Requires:	openssl-tools >= 0.9.7c
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libcurl2
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 cURL is a tool for getting files with URL syntax, supporting FTP,
@@ -54,7 +54,7 @@ oparte na formularzu, serwery proksy, ciasteczka, autoryzacja
 u¿ytkownik/has³o oraz wiele innych u¿ytecznych sztuczek. Curla u¿ywa
 siê g³ównie wtedy, kiedy chce siê automatycznie ¶ci±gn±æ lub wys³aæ
 pliki z/na serwer u¿ywaj±c jednego z dostêpnych protoko³ów.
-%{!?_without_ssl:Ten pakiet obs³uguje tak¿e SSL.}
+%{?with_ssl:Ten pakiet obs³uguje tak¿e SSL.}
 
 %description -l pt_BR
 Curl é um cliente para baixar/enviar arquivos de/para servidores
@@ -89,7 +89,7 @@ Summary(ru):	æÁÊÌÙ ÄÌÑ ÒÁÚÒÁÂÏÔËÉ Ó ÉÓÐÏÌØÚÏ×ÁÎÉÅÍ ÂÉÂÌÉÏÔÅËÉ curl
 Summary(uk):	æÁÊÌÉ ÄÌÑ ÒÏÚÒÏÂËÉ Ú ×ÉËÏÒÉÓÔÁÎÎÑÍ Â¦ÂÌ¦ÏÔÅËÉ curl
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
-%{!?_without_ssl:Requires:	openssl-devel >= 0.9.7c}
+%{?with_ssl:Requires:	openssl-devel >= 0.9.7c}
 Obsoletes:	libcurl2-devel
 
 %description devel
@@ -142,8 +142,8 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %build
 install /usr/share/automake/config.* .
 %configure \
-	%{!?_without_ssl:--with-ssl=%{_prefix}} \
-	%{!?_without_ssl:--with-ca-bundle=/usr/share/ssl/ca-bundle.crt} \
+	%{?with_ssl:--with-ssl=%{_prefix}} \
+	%{?with_ssl:--with-ca-bundle=/usr/share/ssl/ca-bundle.crt} \
 	--with-ipv6
 
 %{__make}
