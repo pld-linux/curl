@@ -13,7 +13,7 @@ Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Source0:	http://curl.haxx.se/stuff/%{name}-%{ver}-%{prerel}.tar.gz
 URL:		http://curl.haxx.se/
-%{!?bcond_off_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
+%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -74,7 +74,7 @@ Statyczna wersja biblioteki curl.
 
 %build
 %configure \
-	%{!?bcond_off_ssl:--with-ssl=/usr}
+	%{!?_without_ssl:--with-ssl=/usr}
 
 %{__make} 
 
