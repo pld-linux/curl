@@ -11,7 +11,7 @@ Summary(ru):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk):	Утил╕та для отримання файл╕в з сервер╕в FTP, HTTP та ╕нших
 Name:		curl
 Version:	7.14.0
-Release:	0.1
+Release:	1
 License:	MIT-like
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
@@ -24,7 +24,7 @@ URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	libidn-devel >= 0.4.1
-%{?with_heimdal:BuildRequires:	heimdal-devel}
+%{?with_heimdal:BuildRequires:	heimdal-devel >= 0.7}
 BuildRequires:	libtool
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
 Requires:	openssl-tools >= 0.9.7d
