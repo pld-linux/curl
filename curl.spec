@@ -11,7 +11,7 @@ Summary(ru):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk):	Утил╕та для отримання файл╕в з сервер╕в FTP, HTTP та ╕нших
 Name:		curl
 Version:	7.15.0
-Release:	1
+Release:	2
 License:	MIT-like
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
@@ -19,6 +19,7 @@ Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
 # Source0-md5:	e3b130320d3704af375c097606f49c01
 Patch0:		%{name}-no_strip.patch
 Patch1:		%{name}-ac.patch
+Patch2:		%{name}-heimdal.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -140,6 +141,7 @@ Bibliotecas estАticas para desenvolvimento com o curl.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%{?with_heimdal:%patch2 -p0}
 
 %build
 %{__libtoolize}
