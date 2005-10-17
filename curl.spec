@@ -91,6 +91,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libidn-devel >= 0.4.1
 %{?with_heimdal:Requires:	heimdal-devel}
+%{?with_heimdal:Requires:	gss-devel}
 %{?with_ssl:Requires:	openssl-devel >= 0.9.7c}
 Obsoletes:	libcurl2-devel
 
