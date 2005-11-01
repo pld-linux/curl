@@ -11,7 +11,7 @@ Summary(ru):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk):	Утил╕та для отримання файл╕в з сервер╕в FTP, HTTP та ╕нших
 Name:		curl
 Version:	7.15.0
-Release:	2
+Release:	2.1
 License:	MIT-like
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
@@ -29,6 +29,7 @@ BuildRequires:	libtool
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
 Requires:	openssl-tools >= 0.9.7d
 Requires:	libidn >= 0.4.1
+Requires:	%{name}-libs = %{version}-%{release}
 Obsoletes:	libcurl2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -88,7 +89,7 @@ Summary(pt_BR):	Arquivos de cabeГalho e bibliotecas de desenvolvimento
 Summary(ru):	Файлы для разработки с использованием библиотеки curl
 Summary(uk):	Файли для розробки з використанням б╕бл╕отеки curl
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libidn-devel >= 0.4.1
 %{?with_heimdal:Requires:	heimdal-devel}
 %{?with_ssl:Requires:	openssl-devel >= 0.9.7c}
@@ -110,6 +111,13 @@ Arquivos de cabeГalho e bibliotecas de desenvolvimento.
 %description devel -l uk
 Цей пакет м╕стить файли, необх╕дн╕ для розробки програм з
 використанням б╕бл╕отеки curl.
+
+%package libs
+Summary:	curl library
+Group:		Libraries
+
+%description libs
+curl library.
 
 %package static
 Summary:	Static version of curl library
@@ -166,14 +174,13 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	libs -p /sbin/ldconfig
+%postun libs -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %doc CHANGES COPYING README docs/{BUGS,FAQ,FEATURES,HISTORY,KNOWN_BUGS,MANUAL,SSLCERTS,THANKS,TODO,TheArtOfHttpScripting}
 %attr(755,root,root) %{_bindir}/curl
-%attr(755,root,root) %{_libdir}/libcurl.so.*.*.*
 %{_mandir}/man1/curl.1*
 
 %files devel
@@ -185,6 +192,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/curl
 %{_mandir}/man1/curl-config.1*
 %{_mandir}/man3/*curl*.3*
+
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libcurl.so.*.*.*
 
 %files static
 %defattr(644,root,root,755)
