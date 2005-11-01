@@ -82,6 +82,17 @@ curl п╕дтриму╓ багато корисних можливостей, серед яких п╕дтримка
 прокс╕, авторизац╕я користувача, в╕двантаження по FTP, HTTP POST,
 в╕дновлення перервано╖ пересилки та багато ╕ншого.
 
+%package libs
+Summary:	curl library
+Summary(pl):	Biblioteka curl
+Group:		Libraries
+
+%description libs
+curl library.
+
+%description libs -l pl
+Biblioteka curl.
+
 %package devel
 Summary:	Header files and development documentation for curl library
 Summary(pl):	Pliki nagЁСwkowe i dokumentacja do biblioteki curl
@@ -111,17 +122,6 @@ Arquivos de cabeГalho e bibliotecas de desenvolvimento.
 %description devel -l uk
 Цей пакет м╕стить файли, необх╕дн╕ для розробки програм з
 використанням б╕бл╕отеки curl.
-
-%package libs
-Summary:	curl library
-Summary(pl):	Biblioteka curl
-Group:		Libraries
-
-%description libs
-curl library.
-
-%description libs -l pl
-Biblioteka curl.
 
 %package static
 Summary:	Static version of curl library
@@ -187,6 +187,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/curl
 %{_mandir}/man1/curl.1*
 
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libcurl.so.*.*.*
+
 %files devel
 %defattr(644,root,root,755)
 %doc docs/{CONTRIBUTE,INTERNALS,LICENSE-MIXING,RESOURCES}
@@ -196,10 +200,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/curl
 %{_mandir}/man1/curl-config.1*
 %{_mandir}/man3/*curl*.3*
-
-%files libs
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libcurl.so.*.*.*
 
 %files static
 %defattr(644,root,root,755)
