@@ -114,10 +114,14 @@ Arquivos de cabeçalho e bibliotecas de desenvolvimento.
 
 %package libs
 Summary:	curl library
+Summary(pl):	Biblioteka curl
 Group:		Libraries
 
 %description libs
 curl library.
+
+%description libs -l pl
+Biblioteka curl.
 
 %package static
 Summary:	Static version of curl library
