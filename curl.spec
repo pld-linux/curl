@@ -10,13 +10,13 @@ Summary(pt_BR):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS
 Summary(ru):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk):	Утил╕та для отримання файл╕в з сервер╕в FTP, HTTP та ╕нших
 Name:		curl
-Version:	7.15.0
-Release:	3
+Version:	7.15.1
+Release:	1
 License:	MIT-like
 Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
-# Source0-md5:	e3b130320d3704af375c097606f49c01
+# Source0-md5:	d330d48580bfade58c82d4f295f171f0
 Patch0:		%{name}-no_strip.patch
 Patch1:		%{name}-ac.patch
 Patch2:		%{name}-heimdal.patch
@@ -198,6 +198,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libcurl.so
 %{_libdir}/libcurl.la
 %{_includedir}/curl
+%{_pkgconfigdir}/libcurl.pc
 %{_mandir}/man1/curl-config.1*
 %{_mandir}/man3/*curl*.3*
 
