@@ -164,7 +164,7 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %configure \
 	%{?with_ssl:--with-ssl=%{_prefix}} \
 	%{?with_ssl:--with-ca-bundle=/usr/share/ssl/ca-bundle.crt} \
-	%{?with_heimdal:--with-gssapi-includes=%{_includedir}} \
+	%{?with_heimdal:--with-gssapi=%{_prefix}} \
 	--with-ipv6
 
 %{__make}
