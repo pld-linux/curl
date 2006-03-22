@@ -10,26 +10,25 @@ Summary(pt_BR):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS
 Summary(ru):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk):	Утил╕та для отримання файл╕в з сервер╕в FTP, HTTP та ╕нших
 Name:		curl
-Version:	7.15.2
+Version:	7.15.3
 Release:	1
 License:	MIT-like
-Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
-# Source0-md5:	6c08e7891fe0db49af65fd10abfd69b1
+# Source0-md5:	d71b2ee8febfde2c7dc30a43638ec0d9
 Patch0:		%{name}-no_strip.patch
 Patch1:		%{name}-ac.patch
 Patch2:		%{name}-heimdal.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
-BuildRequires:	libidn-devel >= 0.4.1
 %{?with_heimdal:BuildRequires:	heimdal-devel >= 0.7}
+BuildRequires:	libidn-devel >= 0.4.1
 BuildRequires:	libtool
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
-Requires:	openssl-tools >= 0.9.7d
-Requires:	libidn >= 0.4.1
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	libidn >= 0.4.1
+Requires:	openssl-tools >= 0.9.7d
 Obsoletes:	libcurl2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -101,8 +100,8 @@ Summary(ru):	Файлы для разработки с использованием библиотеки curl
 Summary(uk):	Файли для розробки з використанням б╕бл╕отеки curl
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	libidn-devel >= 0.4.1
 %{?with_heimdal:Requires:	heimdal-devel}
+Requires:	libidn-devel >= 0.4.1
 %{?with_ssl:Requires:	openssl-devel >= 0.9.7c}
 Obsoletes:	libcurl2-devel
 
