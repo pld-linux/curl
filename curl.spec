@@ -1,5 +1,6 @@
 #
 # Conditional build:
+%bcond_with	ares	# with c-ares (asynchronous DNS operations) library (disables IPv6)
 %bcond_without	ssl	# without SSL support
 %bcond_without	heimdal	# without HEIMDAL support
 #
@@ -22,6 +23,7 @@ Patch2:		%{name}-heimdal.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
+%{?with_ares:BuildRequires:	c-ares-devel}
 %{?with_heimdal:BuildRequires:	heimdal-devel >= 0.7}
 BuildRequires:	libidn-devel >= 0.4.1
 BuildRequires:	libtool
@@ -164,7 +166,8 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 	%{?with_ssl:--with-ssl=%{_prefix}} \
 	%{?with_ssl:--with-ca-bundle=/usr/share/ssl/ca-bundle.crt} \
 	%{?with_heimdal:--with-gssapi=%{_prefix}} \
-	--with-ipv6
+	%{?with_ares:--enable-ares=%{_prefix}} \
+	--%{?with_ares:dis}%{!?with_ares:en}able-ipv6
 
 %{__make}
 
