@@ -106,6 +106,7 @@ Requires:	%{name}-libs = %{version}-%{release}
 %{?with_heimdal:Requires:	heimdal-devel}
 Requires:	libidn-devel >= 0.4.1
 %{?with_ssl:Requires:	openssl-devel >= 0.9.7c}
+Requires:	zlib-devel
 Obsoletes:	libcurl2-devel
 
 %description devel
