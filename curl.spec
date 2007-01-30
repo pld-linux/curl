@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_with	ares	# with c-ares (asynchronous DNS operations) library (disables IPv6)
+%bcond_without	ssh	# without SSH support
 %bcond_without	ssl	# without SSL support
 %bcond_without	heimdal	# without HEIMDAL support
 #
@@ -11,12 +12,12 @@ Summary(pt_BR):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS
 Summary(ru):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk):	Утил╕та для отримання файл╕в з сервер╕в FTP, HTTP та ╕нших
 Name:		curl
-Version:	7.16.0
+Version:	7.16.1
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
-# Source0-md5:	5819f56e93d04cde2992fe88b54cbfad
+# Source0-md5:	acdab0b0467c55e10ed02d2afed80575
 Patch0:		%{name}-no_strip.patch
 Patch1:		%{name}-ac.patch
 Patch2:		%{name}-heimdal.patch
@@ -26,6 +27,7 @@ BuildRequires:	automake
 %{?with_ares:BuildRequires:	c-ares-devel}
 %{?with_heimdal:BuildRequires:	heimdal-devel >= 0.7}
 BuildRequires:	libidn-devel >= 0.4.1
+%{?with_ssh:BuildRequires:	libssh2-devel}
 BuildRequires:	libtool
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
 BuildRequires:	zlib-devel
