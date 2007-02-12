@@ -6,11 +6,11 @@
 %bcond_without	heimdal	# without HEIMDAL support
 #
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
-Summary(es.UTF-8):   Un cliente para bajar archivos de servidores (FTP, HTTP, y otros)
-Summary(pl.UTF-8):   Narzędzie do ściągania plików z serwerów (FTP, HTTP i innych)
-Summary(pt_BR.UTF-8):   Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS)
-Summary(ru.UTF-8):   Утилита для получения файлов с серверов FTP, HTTP и других
-Summary(uk.UTF-8):   Утиліта для отримання файлів з серверів FTP, HTTP та інших
+Summary(es.UTF-8):	Un cliente para bajar archivos de servidores (FTP, HTTP, y otros)
+Summary(pl.UTF-8):	Narzędzie do ściągania plików z serwerów (FTP, HTTP i innych)
+Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS)
+Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
+Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	7.16.1
 Release:	1
@@ -88,7 +88,7 @@ curl п╕дтриму╓ багато корисних можливостей, 
 
 %package libs
 Summary:	curl library
-Summary(pl.UTF-8):   Biblioteka curl
+Summary(pl.UTF-8):	Biblioteka curl
 Group:		Libraries
 
 %description libs
@@ -99,10 +99,10 @@ Biblioteka curl.
 
 %package devel
 Summary:	Header files and development documentation for curl library
-Summary(pl.UTF-8):   Pliki nagłówkowe i dokumentacja do biblioteki curl
-Summary(pt_BR.UTF-8):   Arquivos de cabeçalho e bibliotecas de desenvolvimento
-Summary(ru.UTF-8):   Файлы для разработки с использованием библиотеки curl
-Summary(uk.UTF-8):   Файли для розробки з використанням бібліотеки curl
+Summary(pl.UTF-8):	Pliki nagłówkowe i dokumentacja do biblioteki curl
+Summary(pt_BR.UTF-8):	Arquivos de cabeçalho e bibliotecas de desenvolvimento
+Summary(ru.UTF-8):	Файлы для разработки с использованием библиотеки curl
+Summary(uk.UTF-8):	Файли для розробки з використанням бібліотеки curl
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 %{?with_ares:Requires:	c-ares-devel}
@@ -131,10 +131,10 @@ Arquivos de cabeçalho e bibliotecas de desenvolvimento.
 
 %package static
 Summary:	Static version of curl library
-Summary(pl.UTF-8):   Statyczna wersja biblioteki curl
-Summary(pt_BR.UTF-8):   Bibliotecas estáticas para desenvolvimento com o curl
-Summary(ru.UTF-8):   Статические библиотеки для разработки с использованием библиотеки curl
-Summary(uk.UTF-8):   Статичні бібліотеки для розробки з використанням бібліотеки curl
+Summary(pl.UTF-8):	Statyczna wersja biblioteki curl
+Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento com o curl
+Summary(ru.UTF-8):	Статические библиотеки для разработки с использованием библиотеки curl
+Summary(uk.UTF-8):	Статичні бібліотеки для розробки з використанням бібліотеки curl
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
