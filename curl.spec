@@ -6,11 +6,11 @@
 %bcond_without	heimdal	# without HEIMDAL support
 #
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
-Summary(es):	Un cliente para bajar archivos de servidores (FTP, HTTP, y otros)
-Summary(pl):	NarzЙdzie do ╤ci╠gania plikСw z serwerСw (FTP, HTTP i innych)
-Summary(pt_BR):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS)
-Summary(ru):	Утилита для получения файлов с серверов FTP, HTTP и других
-Summary(uk):	Утил╕та для отримання файл╕в з сервер╕в FTP, HTTP та ╕нших
+Summary(es.UTF-8):   Un cliente para bajar archivos de servidores (FTP, HTTP, y otros)
+Summary(pl.UTF-8):   Narzд≥dzie do е⌡ciд┘gania plikцЁw z serwerцЁw (FTP, HTTP i innych)
+Summary(pt_BR.UTF-8):   Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS)
+Summary(ru.UTF-8):   пёя┌п╦п╩п╦я┌п╟ п╢п╩я▐ п©п╬п╩я┐я┤п╣п╫п╦я▐ я└п╟п╧п╩п╬п╡ я│ я│п╣я─п╡п╣я─п╬п╡ FTP, HTTP п╦ п╢я─я┐пЁп╦я┘
+Summary(uk.UTF-8):   пёя┌п╦п╩я√я┌п╟ п╢п╩я▐ п╬я┌я─п╦п╪п╟п╫п╫я▐ я└п╟п╧п╩я√п╡ п╥ я│п╣я─п╡п╣я─я√п╡ FTP, HTTP я┌п╟ я√п╫я┬п╦я┘
 Name:		curl
 Version:	7.16.1
 Release:	1
@@ -51,58 +51,58 @@ to work without user interaction or any kind of interactivity. cURL
 offers many useful capabilities, like proxy support, user
 authentication, FTP upload, HTTP post, and file transfer resume.
 
-%description -l pl
-cURL jest narzЙdziem do ╤ci╠gania plikСw o skЁadni URL. ObsЁuguje FTP,
-HTTP, HTTPS, GOPHER, TELNET, DICT, FILE i LDAP. cURL obsЁuguje rСwnie©
-HTTP POST, HTTP PUT, zaЁadowywanie (uploading) FTP, zaЁadowywanie HTTP
+%description -l pl.UTF-8
+cURL jest narzд≥dziem do е⌡ciд┘gania plikцЁw o skе┌adni URL. Obsе┌uguje FTP,
+HTTP, HTTPS, GOPHER, TELNET, DICT, FILE i LDAP. cURL obsе┌uguje rцЁwnieе╪
+HTTP POST, HTTP PUT, zaе┌adowywanie (uploading) FTP, zaе┌adowywanie HTTP
 oparte na formularzu, serwery proksy, ciasteczka, autoryzacja
-u©ytkownik/hasЁo oraz wiele innych u©ytecznych sztuczek. Curla u©ywa
-siЙ gЁСwnie wtedy, kiedy chce siЙ automatycznie ╤ci╠gn╠Ф lub wysЁaФ
-pliki z/na serwer u©ywaj╠c jednego z dostЙpnych protokoЁСw.
-%{?with_ssl:Ten pakiet obsЁuguje tak©e SSL.}
+uе╪ytkownik/hasе┌o oraz wiele innych uе╪ytecznych sztuczek. Curla uе╪ywa
+siд≥ gе┌цЁwnie wtedy, kiedy chce siд≥ automatycznie е⌡ciд┘gnд┘д┤ lub wysе┌aд┤
+pliki z/na serwer uе╪ywajд┘c jednego z dostд≥pnych protokoе┌цЁw.
+%{?with_ssl:Ten pakiet obsе┌uguje takе╪e SSL.}
 
-%description -l pt_BR
-Curl И um cliente para baixar/enviar arquivos de/para servidores
-usando um dos protocolos suportados. и projetado para funcionar sem a
-interaГЦo do usuАrio.
+%description -l pt_BR.UTF-8
+Curl ц╘ um cliente para baixar/enviar arquivos de/para servidores
+usando um dos protocolos suportados. ц┴ projetado para funcionar sem a
+interaц╖цёo do usuц║rio.
 
-Curl trabalha com proxy, autenticaГЦo, FTP put, HTTP post, e pode
-continuar transferЙncias interrompidas, e mais...
+Curl trabalha com proxy, autenticaц╖цёo, FTP put, HTTP post, e pode
+continuar transferц╙ncias interrompidas, e mais...
 
-%description -l ru
-curl - это клиент с множеством поддерживаемых протоколов для получения
-файлов с серверов, спроектированный для работы как в неинтерактивном
-режиме, так и с возможностью диалога с пользователем.
+%description -l ru.UTF-8
+curl - я█я┌п╬ п╨п╩п╦п╣п╫я┌ я│ п╪п╫п╬п╤п╣я│я┌п╡п╬п╪ п©п╬п╢п╢п╣я─п╤п╦п╡п╟п╣п╪я▀я┘ п©я─п╬я┌п╬п╨п╬п╩п╬п╡ п╢п╩я▐ п©п╬п╩я┐я┤п╣п╫п╦я▐
+я└п╟п╧п╩п╬п╡ я│ я│п╣я─п╡п╣я─п╬п╡, я│п©я─п╬п╣п╨я┌п╦я─п╬п╡п╟п╫п╫я▀п╧ п╢п╩я▐ я─п╟п╠п╬я┌я▀ п╨п╟п╨ п╡ п╫п╣п╦п╫я┌п╣я─п╟п╨я┌п╦п╡п╫п╬п╪
+я─п╣п╤п╦п╪п╣, я┌п╟п╨ п╦ я│ п╡п╬п╥п╪п╬п╤п╫п╬я│я┌я▄я▌ п╢п╦п╟п╩п╬пЁп╟ я│ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩п╣п╪.
 
-curl поддерживает много полезных возможностей, среди которых поддержка
-прокси, авторизация пользователя, закачивание по FTP, поддержка HTTP
-POST, восстановление прерванной пересылки и многое другое.
+curl п©п╬п╢п╢п╣я─п╤п╦п╡п╟п╣я┌ п╪п╫п╬пЁп╬ п©п╬п╩п╣п╥п╫я▀я┘ п╡п╬п╥п╪п╬п╤п╫п╬я│я┌п╣п╧, я│я─п╣п╢п╦ п╨п╬я┌п╬я─я▀я┘ п©п╬п╢п╢п╣я─п╤п╨п╟
+п©я─п╬п╨я│п╦, п╟п╡я┌п╬я─п╦п╥п╟я├п╦я▐ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐, п╥п╟п╨п╟я┤п╦п╡п╟п╫п╦п╣ п©п╬ FTP, п©п╬п╢п╢п╣я─п╤п╨п╟ HTTP
+POST, п╡п╬я│я│я┌п╟п╫п╬п╡п╩п╣п╫п╦п╣ п©я─п╣я─п╡п╟п╫п╫п╬п╧ п©п╣я─п╣я│я▀п╩п╨п╦ п╦ п╪п╫п╬пЁп╬п╣ п╢я─я┐пЁп╬п╣.
 
-curl - це кл╕╓нт з багатьма п╕дтримуваними протоколами для отримання
-файл╕в з сервер╕в, спроектований для роботи як в не╕нтерактивному
-режим╕, так ╕ з можлив╕стю д╕алогу з користувачем.
+curl - я├п╣ п╨п╩Б∙∙Б∙⌠п╫я┌ п╥ п╠п╟пЁп╟я┌я▄п╪п╟ п©Б∙∙п╢я┌я─п╦п╪я┐п╡п╟п╫п╦п╪п╦ п©я─п╬я┌п╬п╨п╬п╩п╟п╪п╦ п╢п╩я▐ п╬я┌я─п╦п╪п╟п╫п╫я▐
+я└п╟п╧п╩Б∙∙п╡ п╥ я│п╣я─п╡п╣я─Б∙∙п╡, я│п©я─п╬п╣п╨я┌п╬п╡п╟п╫п╦п╧ п╢п╩я▐ я─п╬п╠п╬я┌п╦ я▐п╨ п╡ п╫п╣Б∙∙п╫я┌п╣я─п╟п╨я┌п╦п╡п╫п╬п╪я┐
+я─п╣п╤п╦п╪Б∙∙, я┌п╟п╨ Б∙∙ п╥ п╪п╬п╤п╩п╦п╡Б∙∙я│я┌я▌ п╢Б∙∙п╟п╩п╬пЁя┐ п╥ п╨п╬я─п╦я│я┌я┐п╡п╟я┤п╣п╪.
 
-curl п╕дтриму╓ багато корисних можливостей, серед яких п╕дтримка
-прокс╕, авторизац╕я користувача, в╕двантаження по FTP, HTTP POST,
-в╕дновлення перервано╖ пересилки та багато ╕ншого.
+curl п©Б∙∙п╢я┌я─п╦п╪я┐Б∙⌠ п╠п╟пЁп╟я┌п╬ п╨п╬я─п╦я│п╫п╦я┘ п╪п╬п╤п╩п╦п╡п╬я│я┌п╣п╧, я│п╣я─п╣п╢ я▐п╨п╦я┘ п©Б∙∙п╢я┌я─п╦п╪п╨п╟
+п©я─п╬п╨я│Б∙∙, п╟п╡я┌п╬я─п╦п╥п╟я├Б∙∙я▐ п╨п╬я─п╦я│я┌я┐п╡п╟я┤п╟, п╡Б∙∙п╢п╡п╟п╫я┌п╟п╤п╣п╫п╫я▐ п©п╬ FTP, HTTP POST,
+п╡Б∙∙п╢п╫п╬п╡п╩п╣п╫п╫я▐ п©п╣я─п╣я─п╡п╟п╫п╬Б∙√ п©п╣я─п╣я│п╦п╩п╨п╦ я┌п╟ п╠п╟пЁп╟я┌п╬ Б∙∙п╫я┬п╬пЁп╬.
 
 %package libs
 Summary:	curl library
-Summary(pl):	Biblioteka curl
+Summary(pl.UTF-8):   Biblioteka curl
 Group:		Libraries
 
 %description libs
 curl library.
 
-%description libs -l pl
+%description libs -l pl.UTF-8
 Biblioteka curl.
 
 %package devel
 Summary:	Header files and development documentation for curl library
-Summary(pl):	Pliki nagЁСwkowe i dokumentacja do biblioteki curl
-Summary(pt_BR):	Arquivos de cabeГalho e bibliotecas de desenvolvimento
-Summary(ru):	Файлы для разработки с использованием библиотеки curl
-Summary(uk):	Файли для розробки з використанням б╕бл╕отеки curl
+Summary(pl.UTF-8):   Pliki nagе┌цЁwkowe i dokumentacja do biblioteki curl
+Summary(pt_BR.UTF-8):   Arquivos de cabeц╖alho e bibliotecas de desenvolvimento
+Summary(ru.UTF-8):   п╓п╟п╧п╩я▀ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ я│ п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╣п╪ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ curl
+Summary(uk.UTF-8):   п╓п╟п╧п╩п╦ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ п╥ п╡п╦п╨п╬я─п╦я│я┌п╟п╫п╫я▐п╪ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ curl
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 %{?with_ares:Requires:	c-ares-devel}
@@ -115,45 +115,45 @@ Obsoletes:	libcurl2-devel
 %description devel
 Header files and development documentation for curl library.
 
-%description devel -l pl
-Pliki nagЁСwkowe i dokumentacja do biblioteki curl.
+%description devel -l pl.UTF-8
+Pliki nagе┌цЁwkowe i dokumentacja do biblioteki curl.
 
-%description devel -l pt_BR
-Arquivos de cabeГalho e bibliotecas de desenvolvimento.
+%description devel -l pt_BR.UTF-8
+Arquivos de cabeц╖alho e bibliotecas de desenvolvimento.
 
-%description devel -l ru
-Этот пакет содержит файлы, необходимые для разработки программ с
-использованием библиотеки curl.
+%description devel -l ru.UTF-8
+п╜я┌п╬я┌ п©п╟п╨п╣я┌ я│п╬п╢п╣я─п╤п╦я┌ я└п╟п╧п╩я▀, п╫п╣п╬п╠я┘п╬п╢п╦п╪я▀п╣ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ п©я─п╬пЁя─п╟п╪п╪ я│
+п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╣п╪ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ curl.
 
-%description devel -l uk
-Цей пакет м╕стить файли, необх╕дн╕ для розробки програм з
-використанням б╕бл╕отеки curl.
+%description devel -l uk.UTF-8
+п╕п╣п╧ п©п╟п╨п╣я┌ п╪я√я│я┌п╦я┌я▄ я└п╟п╧п╩п╦, п╫п╣п╬п╠я┘я√п╢п╫я√ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ п©я─п╬пЁя─п╟п╪ п╥
+п╡п╦п╨п╬я─п╦я│я┌п╟п╫п╫я▐п╪ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ curl.
 
 %package static
 Summary:	Static version of curl library
-Summary(pl):	Statyczna wersja biblioteki curl
-Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com o curl
-Summary(ru):	Статические библиотеки для разработки с использованием библиотеки curl
-Summary(uk):	Статичн╕ б╕бл╕отеки для розробки з використанням б╕бл╕отеки curl
+Summary(pl.UTF-8):   Statyczna wersja biblioteki curl
+Summary(pt_BR.UTF-8):   Bibliotecas estц║ticas para desenvolvimento com o curl
+Summary(ru.UTF-8):   п║я┌п╟я┌п╦я┤п╣я│п╨п╦п╣ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ я│ п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╣п╪ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ curl
+Summary(uk.UTF-8):   п║я┌п╟я┌п╦я┤п╫я√ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ п╥ п╡п╦п╨п╬я─п╦я│я┌п╟п╫п╫я▐п╪ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ curl
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of curl library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna wersja biblioteki curl.
 
-%description static -l pt_BR
-Bibliotecas estАticas para desenvolvimento com o curl.
+%description static -l pt_BR.UTF-8
+Bibliotecas estц║ticas para desenvolvimento com o curl.
 
-%description static -l ru
-Этот пакет содержит статическую библиотеку для разработки программ с
-использованием библиотеки curl.
+%description static -l ru.UTF-8
+п╜я┌п╬я┌ п©п╟п╨п╣я┌ я│п╬п╢п╣я─п╤п╦я┌ я│я┌п╟я┌п╦я┤п╣я│п╨я┐я▌ п╠п╦п╠п╩п╦п╬я┌п╣п╨я┐ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ п©я─п╬пЁя─п╟п╪п╪ я│
+п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╣п╪ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ curl.
 
-%description static -l uk
-Цей пакет м╕стить статичну б╕бл╕отеку для розробки програм з
-використанням б╕бл╕отеки curl.
+%description static -l uk.UTF-8
+п╕п╣п╧ п©п╟п╨п╣я┌ п╪я√я│я┌п╦я┌я▄ я│я┌п╟я┌п╦я┤п╫я┐ п╠я√п╠п╩я√п╬я┌п╣п╨я┐ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ п©я─п╬пЁя─п╟п╪ п╥
+п╡п╦п╨п╬я─п╦я│я┌п╟п╫п╫я▐п╪ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ curl.
 
 %prep
 %setup -q
