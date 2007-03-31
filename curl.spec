@@ -3,7 +3,7 @@
 %bcond_with	ares	# with c-ares (asynchronous DNS operations) library (disables IPv6)
 %bcond_without	ssh	# without SSH support
 %bcond_without	ssl	# without SSL support
-%bcond_without	krb5	# without MIT Kerberos 5 support
+%bcond_without	kerberos5	# without MIT Kerberos 5 support
 #
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Summary(es.UTF-8):	Un cliente para bajar archivos de servidores (FTP, HTTP, y otros)
@@ -24,7 +24,7 @@ URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 %{?with_ares:BuildRequires:	c-ares-devel}
-%{?with_krb5:BuildRequires:	krb5-devel}
+%{?with_kerberos5:BuildRequires:	krb5-devel}
 BuildRequires:	libidn-devel >= 0.4.1
 %{?with_ssh:BuildRequires:	libssh2-devel}
 BuildRequires:	libtool
@@ -105,7 +105,7 @@ Summary(uk.UTF-8):	Файли для розробки з використанн�
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 %{?with_ares:Requires:	c-ares-devel}
-%{?with_krb5:Requires:	krb5-devel}
+%{?with_kerberos5:Requires:	krb5-devel}
 Requires:	libidn-devel >= 0.4.1
 %{?with_ssl:Requires:	openssl-devel >= 0.9.7c}
 Requires:	zlib-devel
@@ -168,7 +168,7 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %configure \
 	%{?with_ssl:--with-ssl=%{_prefix}} \
 	%{?with_ssl:--with-ca-bundle=/usr/share/ssl/ca-bundle.crt} \
-	%{?with_krb5:--with-gssapi=%{_prefix}} \
+	%{?with_kerberos5:--with-gssapi=%{_prefix}} \
 	%{?with_ares:--enable-ares=%{_prefix}} \
 	--%{?with_ares:dis}%{!?with_ares:en}able-ipv6
 
