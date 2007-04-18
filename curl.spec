@@ -1,8 +1,8 @@
 #
 # Conditional build:
-%bcond_with	ares	# with c-ares (asynchronous DNS operations) library (disables IPv6)
-%bcond_without	ssh	# without SSH support
-%bcond_without	ssl	# without SSL support
+%bcond_with	ares		# with c-ares (asynchronous DNS operations) library (disables IPv6)
+%bcond_without	ssh		# without SSH support
+%bcond_without	ssl		# without SSL support
 %bcond_without	kerberos5	# without MIT Kerberos 5 support
 #
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
@@ -12,12 +12,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.16.1
-Release:	2
+Version:	7.16.2
+Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
-# Source0-md5:	acdab0b0467c55e10ed02d2afed80575
+# Source0-md5:	37a1de15c4300ca9413d39d2bcea9b36
 Patch0:		%{name}-no_strip.patch
 Patch1:		%{name}-ac.patch
 URL:		http://curl.haxx.se/
