@@ -13,7 +13,7 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	7.16.2
-Release:	1
+Release:	2
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
@@ -166,6 +166,7 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %{__autoheader}
 %{__automake}
 %configure \
+	ac_cv_header_gss_h=no \
 	%{?with_ssl:--with-ssl=%{_prefix}} \
 	%{?with_ssl:--with-ca-bundle=/usr/share/ssl/ca-bundle.crt} \
 	%{?with_kerberos5:--with-gssapi=%{_prefix}} \
