@@ -20,6 +20,7 @@ Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
 # Source0-md5:	37a1de15c4300ca9413d39d2bcea9b36
 Patch0:		%{name}-no_strip.patch
 Patch1:		%{name}-ac.patch
+Patch2:		%{name}-pc.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -158,6 +159,7 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
