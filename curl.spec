@@ -108,6 +108,7 @@ Requires:	%{name}-libs = %{version}-%{release}
 %{?with_ares:Requires:	c-ares-devel}
 %{?with_kerberos5:Requires:	krb5-devel}
 Requires:	libidn-devel >= 0.4.1
+%{?with_ssh:Requires:	libssh2-devel}
 %{?with_ssl:Requires:	openssl-devel >= 0.9.7c}
 Requires:	zlib-devel
 Obsoletes:	libcurl2-devel
