@@ -33,7 +33,7 @@ BuildRequires:	libtool
 BuildRequires:	zlib-devel
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libidn >= 0.4.1
-Requires:	libssh2 >= 0.16
+%{?with_ssh:Requires:	libssh2 >= 0.16}
 Requires:	openssl-tools >= 0.9.7d
 Obsoletes:	libcurl2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
