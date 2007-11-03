@@ -29,6 +29,7 @@ BuildRequires:	automake
 BuildRequires:	libidn-devel >= 0.4.1
 %{?with_ssh:BuildRequires:	libssh2-devel >= 0.16}
 BuildRequires:	libtool
+BuildRequires:	openldap-devel
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
 BuildRequires:	zlib-devel
 Requires:	%{name}-libs = %{version}-%{release}
