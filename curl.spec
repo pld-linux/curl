@@ -1,5 +1,6 @@
 #
 # Conditional build:
+%bcond_with	ares	# with c-ares (asynchronous DNS operations) library (disables IPv6)
 %bcond_without	ssl	# without SSL support
 %bcond_without	heimdal	# without HEIMDAL support
 #
@@ -10,24 +11,27 @@ Summary(pt_BR):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e HTTPS
 Summary(ru):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk):	Утил╕та для отримання файл╕в з сервер╕в FTP, HTTP та ╕нших
 Name:		curl
-Version:	7.15.0
-Release:	1
+Version:	7.16.1
+Release:	3
 License:	MIT-like
-Vendor:		Daniel Stenberg <Daniel.Stenberg@sth.frontec.se>
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
-# Source0-md5:	e3b130320d3704af375c097606f49c01
+# Source0-md5:	acdab0b0467c55e10ed02d2afed80575
 Patch0:		%{name}-no_strip.patch
 Patch1:		%{name}-ac.patch
+Patch2:		%{name}-heimdal.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
-BuildRequires:	libidn-devel >= 0.4.1
+%{?with_ares:BuildRequires:	c-ares-devel}
 %{?with_heimdal:BuildRequires:	heimdal-devel >= 0.7}
+BuildRequires:	libidn-devel >= 0.4.1
 BuildRequires:	libtool
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
-Requires:	openssl-tools >= 0.9.7d
+BuildRequires:	zlib-devel
+Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libidn >= 0.4.1
+Requires:	openssl-tools >= 0.9.7d
 Obsoletes:	libcurl2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -80,6 +84,17 @@ curl п╕дтриму╓ багато корисних можливостей, серед яких п╕дтримка
 прокс╕, авторизац╕я користувача, в╕двантаження по FTP, HTTP POST,
 в╕дновлення перервано╖ пересилки та багато ╕ншого.
 
+%package libs
+Summary:	curl library
+Summary(pl):	Biblioteka curl
+Group:		Libraries
+
+%description libs
+curl library.
+
+%description libs -l pl
+Biblioteka curl.
+
 %package devel
 Summary:	Header files and development documentation for curl library
 Summary(pl):	Pliki nagЁСwkowe i dokumentacja do biblioteki curl
@@ -87,9 +102,9 @@ Summary(pt_BR):	Arquivos de cabeГalho e bibliotecas de desenvolvimento
 Summary(ru):	Файлы для разработки с использованием библиотеки curl
 Summary(uk):	Файли для розробки з використанням б╕бл╕отеки curl
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
-Requires:	libidn-devel >= 0.4.1
+Requires:	%{name}-libs = %{version}-%{release}
 %{?with_heimdal:Requires:	heimdal-devel}
+Requires:	libidn-devel >= 0.4.1
 %{?with_ssl:Requires:	openssl-devel >= 0.9.7c}
 Obsoletes:	libcurl2-devel
 
@@ -140,6 +155,7 @@ Bibliotecas estАticas para desenvolvimento com o curl.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%{?with_heimdal:%patch2 -p0}
 
 %build
 %{__libtoolize}
@@ -150,8 +166,9 @@ Bibliotecas estАticas para desenvolvimento com o curl.
 %configure \
 	%{?with_ssl:--with-ssl=%{_prefix}} \
 	%{?with_ssl:--with-ca-bundle=/usr/share/ssl/ca-bundle.crt} \
-	%{?with_heimdal:--with-gssapi-includes=%{_includedir}} \
-	--with-ipv6
+	%{?with_heimdal:--with-gssapi=%{_prefix}} \
+	%{?with_ares:--enable-ares=%{_prefix}} \
+	--%{?with_ares:dis}%{!?with_ares:en}able-ipv6
 
 %{__make}
 
@@ -164,15 +181,18 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	libs -p /sbin/ldconfig
+%postun libs -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %doc CHANGES COPYING README docs/{BUGS,FAQ,FEATURES,HISTORY,KNOWN_BUGS,MANUAL,SSLCERTS,THANKS,TODO,TheArtOfHttpScripting}
 %attr(755,root,root) %{_bindir}/curl
-%attr(755,root,root) %{_libdir}/libcurl.so.*.*.*
 %{_mandir}/man1/curl.1*
+
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libcurl.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
@@ -181,6 +201,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libcurl.so
 %{_libdir}/libcurl.la
 %{_includedir}/curl
+%{_pkgconfigdir}/libcurl.pc
 %{_mandir}/man1/curl-config.1*
 %{_mandir}/man3/*curl*.3*
 
