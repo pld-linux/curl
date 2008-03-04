@@ -201,6 +201,7 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libcurl.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libcurl.so.4
 
 %files devel
 %defattr(644,root,root,755)
@@ -211,7 +212,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/curl
 %{_pkgconfigdir}/libcurl.pc
 %{_mandir}/man1/curl-config.1*
-%{_mandir}/man3/*curl*.3*
+%{_mandir}/man3/curl_*.3*
+%{_mandir}/man3/libcurl*.3*
 
 %files static
 %defattr(644,root,root,755)
