@@ -17,7 +17,7 @@ Release:	2
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
-# Source0-md5:	3e50dd887d6a354be312d874e1d3426c
+# Source0-md5:	805834fc1136ff7600d2179bc0386c5a
 Patch0:		%{name}-no_strip.patch
 Patch1:		%{name}-ac.patch
 Patch2:		%{name}-pc.patch
