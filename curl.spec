@@ -12,26 +12,29 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.16.2
-Release:	2
+Version:	7.18.2
+Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
-# Source0-md5:	37a1de15c4300ca9413d39d2bcea9b36
+# Source0-md5:	c389be5b0525276e58865956b7465562
 Patch0:		%{name}-no_strip.patch
 Patch1:		%{name}-ac.patch
+Patch2:		%{name}-pc.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 %{?with_ares:BuildRequires:	c-ares-devel}
-%{?with_kerberos5:BuildRequires:	krb5-devel}
+%{?with_kerberos5:BuildRequires:	heimdal-devel}
 BuildRequires:	libidn-devel >= 0.4.1
-%{?with_ssh:BuildRequires:	libssh2-devel}
+%{?with_ssh:BuildRequires:	libssh2-devel >= 0.16}
 BuildRequires:	libtool
+BuildRequires:	openldap-devel
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
 BuildRequires:	zlib-devel
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libidn >= 0.4.1
+%{?with_ssh:Requires:	libssh2 >= 0.16}
 Requires:	openssl-tools >= 0.9.7d
 Obsoletes:	libcurl2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -105,8 +108,9 @@ Summary(uk.UTF-8):	Файли для розробки з використанн�
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 %{?with_ares:Requires:	c-ares-devel}
-%{?with_kerberos5:Requires:	krb5-devel}
+%{?with_kerberos5:Requires:	heimdal-devel}
 Requires:	libidn-devel >= 0.4.1
+%{?with_ssh:Requires:	libssh2-devel >= 0.16}
 %{?with_ssl:Requires:	openssl-devel >= 0.9.7c}
 Requires:	zlib-devel
 Obsoletes:	libcurl2-devel
@@ -158,6 +162,7 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
