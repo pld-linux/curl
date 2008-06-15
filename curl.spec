@@ -3,6 +3,7 @@
 %bcond_with	ares		# with c-ares (asynchronous DNS operations) library (disables IPv6)
 %bcond_without	ssh		# without SSH support
 %bcond_without	ssl		# without SSL support
+%bcond_with	gnutls
 %bcond_without	kerberos5	# without MIT Kerberos 5 support
 #
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
@@ -30,7 +31,13 @@ BuildRequires:	libidn-devel >= 0.4.1
 %{?with_ssh:BuildRequires:	libssh2-devel >= 0.16}
 BuildRequires:	libtool
 BuildRequires:	openldap-devel
-%{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
+%if %{with ssl}
+%if %{with gnutls}
+BuildRequires:	gnutls-devel
+%else
+BuildRequires:	openssl-devel >= 0.9.7d
+%endif
+%endif
 BuildRequires:	zlib-devel
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libidn >= 0.4.1
@@ -111,7 +118,13 @@ Requires:	%{name}-libs = %{version}-%{release}
 %{?with_kerberos5:Requires:	krb5-devel}
 Requires:	libidn-devel >= 0.4.1
 %{?with_ssh:Requires:	libssh2-devel >= 0.16}
-%{?with_ssl:Requires:	openssl-devel >= 0.9.7c}
+%if %{with ssl}
+%if %{with gnutls}
+Requires:	gnutls-devel
+%else
+Requires:	openssl-devel >= 0.9.7c
+%endif
+%endif
 Requires:	zlib-devel
 Obsoletes:	libcurl2-devel
 
@@ -172,8 +185,14 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %{__automake}
 %configure \
 	ac_cv_header_gss_h=no \
-	%{?with_ssl:--with-ssl=%{_prefix}} \
-	%{?with_ssl:--with-ca-bundle=/usr/share/ssl/ca-bundle.crt} \
+%if %{with ssl}
+	--with-ca-bundle=/usr/share/ssl/ca-bundle.crt \
+%if %{with gnutls}
+	--with-gnutls=%{_prefix} --without-ssl \
+%else
+	--with-ssl=%{_prefix} \
+%endif
+%endif
 	%{?with_kerberos5:--with-gssapi=%{_prefix}} \
 	%{?with_ares:--enable-ares=%{_prefix}} \
 	--%{?with_ares:dis}%{!?with_ares:en}able-ipv6
