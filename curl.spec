@@ -3,7 +3,7 @@
 %bcond_with	ares		# with c-ares (asynchronous DNS operations) library (disables IPv6)
 %bcond_without	ssh		# without SSH support
 %bcond_without	ssl		# without SSL support
-%bcond_with	gnutls
+%bcond_with	gnutls		# use GnuTLS instead of OpenSSL
 %bcond_without	kerberos5	# without MIT Kerberos 5 support
 #
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
