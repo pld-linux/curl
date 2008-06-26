@@ -3,7 +3,7 @@
 %bcond_with	ares		# with c-ares (asynchronous DNS operations) library (disables IPv6)
 %bcond_without	ssh		# without SSH support
 %bcond_without	ssl		# without SSL support
-%bcond_with	gnutls		# use GnuTLS instead of OpenSSL
+%bcond_without	gnutls		# use GnuTLS instead of OpenSSL
 %bcond_without	kerberos5	# without MIT Kerberos 5 support
 #
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
@@ -14,7 +14,7 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	7.18.2
-Release:	1
+Release:	2
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
