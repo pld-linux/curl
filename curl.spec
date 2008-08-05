@@ -13,7 +13,7 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	7.18.2
-Release:	1
+Release:	2
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
@@ -111,6 +111,7 @@ Requires:	%{name}-libs = %{version}-%{release}
 %{?with_kerberos5:Requires:	heimdal-devel}
 Requires:	libidn-devel >= 0.4.1
 %{?with_ssh:Requires:	libssh2-devel >= 0.16}
+Requires:	openldap-devel
 %{?with_ssl:Requires:	openssl-devel >= 0.9.7c}
 Requires:	zlib-devel
 Obsoletes:	libcurl2-devel
