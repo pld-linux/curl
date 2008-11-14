@@ -195,6 +195,7 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %endif
 	%{?with_kerberos5:--with-gssapi=%{_prefix}} \
 	%{?with_ares:--enable-ares=%{_prefix}} \
+	--enable-ldaps \
 	--%{?with_ares:dis}%{!?with_ares:en}able-ipv6
 
 %{__make}
