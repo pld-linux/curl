@@ -13,12 +13,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.19.1
+Version:	7.19.2
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.bz2
-# Source0-md5:	6c4921e55ad276154065052c9e34e1cb
+# Source0-md5:	3a461b145a4a31fe7d5a44684e7fbdbc
 Patch0:		%{name}-no_strip.patch
 Patch1:		%{name}-ac.patch
 Patch2:		%{name}-pc.patch
@@ -179,14 +179,14 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
 %configure \
 	ac_cv_header_gss_h=no \
 %if %{with ssl}
-	--with-ca-bundle=/usr/share/ssl/ca-bundle.crt \
+	--with-ca-bundle=/etc/certs/ca-certificates.crt \
 %if %{with gnutls}
 	--with-gnutls=%{_prefix} --without-ssl \
 %else
