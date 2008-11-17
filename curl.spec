@@ -99,6 +99,7 @@ curl п╕дтриму╓ багато корисних можливостей, 
 Summary:	curl library
 Summary(pl.UTF-8):	Biblioteka curl
 Group:		Libraries
+Requires:	ca-certificates >= 20080809-4
 
 %description libs
 curl library.
