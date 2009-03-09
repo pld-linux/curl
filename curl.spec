@@ -24,6 +24,9 @@ Patch1:		%{name}-ac.patch
 Patch2:		%{name}-pc.patch
 Patch3:		%{name}-krb5flags.patch
 URL:		http://curl.haxx.se/
+# http://curl.haxx.se/docs/adv_20090303.html
+# Patch or 7.19.4 upgrade needed
+BuildRequires:	security(CVE-2009-0037)
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 %{?with_ares:BuildRequires:	c-ares-devel}
