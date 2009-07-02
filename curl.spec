@@ -4,7 +4,7 @@
 %bcond_without	ssh		# without SSH support
 %bcond_without	ssl		# without SSL support
 %bcond_without	gnutls		# use GnuTLS instead of OpenSSL
-%bcond_without	kerberos5	# without MIT Kerberos 5 support
+%bcond_without	kerberos5	# without Heimdal Kerberos 5 support
 #
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Summary(es.UTF-8):	Un cliente para bajar archivos de servidores (FTP, HTTP, y otros)
@@ -14,7 +14,7 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	7.19.5
-Release:	1
+Release:	2
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.lzma
@@ -27,7 +27,7 @@ URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 %{?with_ares:BuildRequires:	c-ares-devel}
-%{?with_kerberos5:BuildRequires:	krb5-devel}
+%{?with_kerberos5:BuildRequires:	heimdal-devel}
 BuildRequires:	libidn-devel >= 0.4.1
 %{?with_ssh:BuildRequires:	libssh2-devel >= 0.16}
 BuildRequires:	libtool
@@ -118,7 +118,7 @@ Summary(uk.UTF-8):	Файли для розробки з використанн�
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 %{?with_ares:Requires:	c-ares-devel}
-%{?with_kerberos5:Requires:	krb5-devel}
+%{?with_kerberos5:Requires:	heimdal-devel}
 Requires:	libidn-devel >= 0.4.1
 %{?with_ssh:Requires:	libssh2-devel >= 0.16}
 %if %{with ssl}
