@@ -39,6 +39,7 @@ BuildRequires:	gnutls-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 %endif
 %endif
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	zlib-devel
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libidn >= 0.4.1
