@@ -1,6 +1,8 @@
+# TODO
+# - VMware needs curl with ares
 #
 # Conditional build:
-%bcond_with	ares		# with c-ares (asynchronous DNS operations) library (disables IPv6)
+%bcond_without	ares		# with c-ares (asynchronous DNS operations) library (c-ares may not work properly with ipv6)
 %bcond_without	ssh		# without SSH support
 %bcond_without	ssl		# without SSL support
 %bcond_without	gnutls		# use GnuTLS instead of OpenSSL
@@ -14,7 +16,7 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	7.19.7
-Release:	1
+Release:	2
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.lzma
@@ -201,7 +203,7 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 	%{?with_kerberos5:--with-gssapi=%{_prefix}} \
 	%{?with_ares:--enable-ares=%{_prefix}} \
 	--enable-ldaps \
-	--%{?with_ares:dis}%{!?with_ares:en}able-ipv6
+	--enable-ipv6
 
 %{__make}
 
