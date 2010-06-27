@@ -7,6 +7,7 @@
 %bcond_without	ssl		# without SSL support
 %bcond_without	gnutls		# use GnuTLS instead of OpenSSL
 %bcond_without	kerberos5	# without Heimdal Kerberos 5 support
+%bcond_without	rtmp		# without Real Time Media Protocol
 #
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Summary(es.UTF-8):	Un cliente para bajar archivos de servidores (FTP, HTTP, y otros)
@@ -16,7 +17,7 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	7.21.0
-Release:	1
+Release:	2
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.lzma
@@ -32,6 +33,7 @@ BuildRequires:	automake
 %{?with_ares:BuildRequires:	c-ares-devel}
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
 BuildRequires:	libidn-devel >= 0.4.1
+%{?with_rtmp:BuildRequires:	librtmp-devel}
 %{?with_ssh:BuildRequires:	libssh2-devel >= 0.16}
 BuildRequires:	libtool
 BuildRequires:	openldap-devel
@@ -204,6 +206,7 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %endif
 	%{?with_kerberos5:--with-gssapi=%{_prefix}} \
 	%{?with_ares:--enable-ares=%{_prefix}} \
+	%{?with_rtmp:--with-librtmp=%{_prefix}} \
 	--enable-ldaps \
 	--enable-ipv6
 
