@@ -1,8 +1,6 @@
-# TODO
-# - VMware needs curl with ares
 #
 # Conditional build:
-%bcond_without	ares		# with c-ares (asynchronous DNS operations) library (c-ares may not work properly with ipv6)
+%bcond_without	ares		# with c-ares (asynchronous DNS operations) library
 %bcond_without	ssh		# without SSH support
 %bcond_without	ssl		# without SSL support
 %bcond_without	gnutls		# use GnuTLS instead of OpenSSL
