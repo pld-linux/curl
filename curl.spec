@@ -199,14 +199,14 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %if %{with ssl}
 	--with-ca-bundle=/etc/certs/ca-certificates.crt \
 %if %{with gnutls}
-	--with-gnutls=%{_prefix} --without-ssl \
+	--with-gnutls --without-ssl \
 %else
 	--with-ssl=%{_prefix} \
 %endif
 %endif
 	%{?with_kerberos5:--with-gssapi=%{_prefix}} \
-	%{?with_ares:--enable-ares=%{_prefix}} \
-	%{?with_rtmp:--with-librtmp=%{_prefix}} \
+	%{?with_rtmp:--with-librtmp} \
+	%{?with_ares:--enable-ares} \
 	--enable-ldaps \
 	--enable-ipv6
 
