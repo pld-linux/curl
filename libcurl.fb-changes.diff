@@ -1,46 +1,34 @@
-Index: include/curl/multi.h
-===================================================================
-RCS file: /cvsroot/curl/curl/include/curl/multi.h,v
-retrieving revision 1.45
-diff -u -r1.45 multi.h
---- include/curl/multi.h	20 May 2008 10:21:50 -0000	1.45
-+++ include/curl/multi.h	29 Jan 2010 23:45:18 -0000
-@@ -135,6 +135,19 @@
+--- curl-7.21.3/include/curl/multi.h~	2010-09-18 23:00:21.000000000 +0200
++++ curl-7.21.3/include/curl/multi.h	2010-12-16 09:17:03.909735667 +0100
+@@ -132,6 +132,17 @@
+                                        fd_set *write_fd_set,
+                                        fd_set *exc_fd_set,
                                         int *max_fd);
- 
-  /*
-+  * Name:    curl_multi_select()
++ /* Name:    curl_multi_select()
 +  *
 +  * Desc:    Calls select() or poll() internally so app can call
-+  *          curl_multi_perform() as soon as one of them is ready. This is to
-+  *          fix FD_SETSIZE problem curl_multi_fdset() has.
++  * 	     curl_multi_perform() as soon as one of them is ready. This is to
++  * 	     fix FD_SETSIZE problem curl_multi_fdset() has.
 +  *
 +  * Returns: CURLMcode type, general multi error code.
 +  */
 +CURL_EXTERN CURLMcode curl_multi_select(CURLM *multi_handle,
-+                                        int timeout_ms,
-+                                        int *ret);
-+
-+ /*
++					int timeout_ms,
++					int *ret);
+ 
+  /*
    * Name:    curl_multi_perform()
-   *
-   * Desc:    When the app thinks there's data available for curl it calls this
-Index: lib/multi.c
-===================================================================
-RCS file: /cvsroot/curl/curl/lib/multi.c,v
-retrieving revision 1.210
-diff -u -r1.210 multi.c
---- lib/multi.c	28 Jan 2010 15:34:18 -0000	1.210
-+++ lib/multi.c	29 Jan 2010 23:45:19 -0000
+--- curl-7.21.3/lib/multi.c~	2010-12-15 10:04:43.000000000 +0100
++++ curl-7.21.3/lib/multi.c	2010-12-16 09:20:29.652705567 +0100
 @@ -42,6 +42,7 @@
- #include "sendf.h"
  #include "timeval.h"
  #include "http.h"
+ #include "warnless.h"
 +#include "select.h"
  
  #define _MPRINTF_REPLACE /* use our functions only */
  #include <curl/mprintf.h>
-@@ -900,6 +901,80 @@
+@@ -930,6 +931,80 @@
    return CURLM_OK;
  }
  
@@ -119,5 +107,5 @@ diff -u -r1.210 multi.c
 +}
 +
  static CURLMcode multi_runsingle(struct Curl_multi *multi,
+                                  struct timeval now,
                                   struct Curl_one_easy *easy)
- {
