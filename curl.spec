@@ -15,7 +15,7 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	7.21.3
-Release:	1
+Release:	2
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.lzma
@@ -28,7 +28,7 @@ Patch4:		libcurl.fb-changes.diff
 URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
-%{?with_ares:BuildRequires:	c-ares-devel}
+%{?with_ares:BuildRequires:	c-ares-devel >= 1.7.0}
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
 BuildRequires:	libidn-devel >= 0.4.1
 %{?with_rtmp:BuildRequires:	librtmp-devel}
@@ -106,6 +106,7 @@ Summary(pl.UTF-8):	Biblioteka curl
 Group:		Libraries
 Suggests:	ca-certificates
 Conflicts:	ca-certificates < 20080809-4
+%{?with_ares:Requires:	c-ares >= 1.7.0}
 
 %description libs
 curl library.
