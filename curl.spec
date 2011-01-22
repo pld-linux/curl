@@ -35,6 +35,7 @@ BuildRequires:	libidn-devel >= 0.4.1
 %{?with_ssh:BuildRequires:	libssh2-devel >= 0.16}
 BuildRequires:	libtool
 BuildRequires:	openldap-devel
+BuildRequires:	pkgconfig
 %if %{with ssl}
 %if %{with gnutls}
 BuildRequires:	gnutls-devel
