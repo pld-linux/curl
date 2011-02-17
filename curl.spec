@@ -6,7 +6,7 @@
 %bcond_without	gnutls		# use GnuTLS instead of OpenSSL
 %bcond_without	kerberos5	# without Heimdal Kerberos 5 support
 %bcond_without	rtmp		# without Real Time Media Protocol
-#
+
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Summary(es.UTF-8):	Un cliente para bajar archivos de servidores (FTP, HTTP, y otros)
 Summary(pl.UTF-8):	Narzędzie do ściągania plików z serwerów (FTP, HTTP i innych)
@@ -14,12 +14,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.21.3
-Release:	2
+Version:	7.21.4
+Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.lzma
-# Source0-md5:	04f45add29bd9d314811193fc8bd8817
+# Source0-md5:	074fa396afe3dbf10163c05756a5a85d
 Patch0:		%{name}-no_strip.patch
 Patch1:		%{name}-ac.patch
 Patch2:		%{name}-pc.patch
