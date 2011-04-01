@@ -6,6 +6,7 @@
 %bcond_without	gnutls		# use GnuTLS instead of OpenSSL
 %bcond_without	kerberos5	# without Heimdal Kerberos 5 support
 %bcond_without	rtmp		# without Real Time Media Protocol
+%bcond_without	ldap		# without LDAP support
 
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Summary(es.UTF-8):	Un cliente para bajar archivos de servidores (FTP, HTTP, y otros)
@@ -34,7 +35,7 @@ BuildRequires:	libidn-devel >= 0.4.1
 %{?with_rtmp:BuildRequires:	librtmp-devel}
 %{?with_ssh:BuildRequires:	libssh2-devel >= 0.16}
 BuildRequires:	libtool
-BuildRequires:	openldap-devel
+%{?with_ldap:BuildRequires:	openldap-devel}
 BuildRequires:	pkgconfig
 %if %{with ssl}
 %if %{with gnutls}
@@ -128,7 +129,7 @@ Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libidn-devel >= 0.4.1
 %{?with_rtmp:Requires:	librtmp-devel}
 %{?with_ssh:Requires:	libssh2-devel >= 0.16}
-Requires:	openldap-devel
+%{?with_ldap:Requires:	openldap-devel}
 %if %{with ssl}
 %if %{with gnutls}
 Requires:	gnutls-devel
@@ -209,7 +210,8 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 	%{?with_kerberos5:--with-gssapi=%{_prefix}} \
 	%{?with_rtmp:--with-librtmp} \
 	%{?with_ares:--enable-ares} \
-	--enable-ldaps \
+	%{?with_ldap:--enable-ldaps} \
+	%{!?with_ldap:--disable-ldap} \
 	--enable-ipv6
 
 %{__make}
