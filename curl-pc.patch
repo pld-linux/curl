@@ -3,7 +3,7 @@
 @@ -35,6 +35,6 @@
  URL: http://curl.haxx.se/
  Description: Library to transfer files with ftp, http, etc.
- Version: @VERSION@
+ Version: @CURLVERSION@
 -Libs: -L${libdir} -lcurl @LIBS@
 +Libs: -L${libdir} -lcurl
  Libs.private: @LIBCURL_LIBS@ @LIBS@
