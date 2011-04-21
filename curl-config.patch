@@ -1,0 +1,20 @@
+--- curl-7.21.5/curl-config.in.orig	2011-03-19 16:17:12.000000000 +0100
++++ curl-7.21.5/curl-config.in	2011-04-21 19:52:38.816107851 +0200
+@@ -94,7 +94,7 @@
+ 	;;
+ 
+     --version)
+-	echo libcurl @VERSION@
++	echo libcurl @CURLVERSION@
+ 	exit 0
+ 	;;
+ 
+@@ -113,7 +113,7 @@
+ 	  # silent success
+ 	  exit 0
+ 	else
+-	  echo "requested version $checkfor is newer than existing @VERSION@"
++	  echo "requested version $checkfor is newer than existing @CURLVERSION@"
+ 	  exit 1
+ 	fi
+ 	;;
