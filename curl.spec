@@ -223,7 +223,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 # no longer in upstream but a lot of apps tries to include it so we create fake one
-touch $RPM_BUILD_ROOT%{_includedir}/curl/types.h
+[ -e $RPM_BUILD_ROOT%{_includedir}/curl/types.h ] && exit 1
+echo '#warning curl/types.h IS OBSOLETE FROM 2004. STOP USING IT' > $RPM_BUILD_ROOT%{_includedir}/curl/types.h
 
 %clean
 rm -rf $RPM_BUILD_ROOT
