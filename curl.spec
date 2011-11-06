@@ -1,13 +1,19 @@
 #
 # Conditional build:
-%bcond_without	ares		# with c-ares (asynchronous DNS operations) library
 %bcond_without	ssh		# without SSH support
 %bcond_without	ssl		# without SSL support
-%bcond_without	gnutls		# use GnuTLS instead of OpenSSL
 %bcond_without	kerberos5	# without Heimdal Kerberos 5 support
-%bcond_without	rtmp		# without Real Time Media Protocol
 %bcond_without	ldap		# without LDAP support
-#
+%if "%{pld_release}" != "ac"
+%bcond_without	ares		# with c-ares (asynchronous DNS operations) library
+%bcond_without	gnutls		# use GnuTLS instead of OpenSSL
+%bcond_without	rtmp		# without Real Time Media Protocol
+%else
+%bcond_with	ares		# with c-ares (asynchronous DNS operations) library
+%bcond_with	gnutls		# use GnuTLS instead of OpenSSL
+%bcond_with	rtmp		# without Real Time Media Protocol
+%endif
+
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
 Summary(es.UTF-8):	Un cliente para bajar archivos de servidores (FTP, HTTP, y otros)
 Summary(pl.UTF-8):	Narzędzie do ściągania plików z serwerów (FTP, HTTP i innych)
@@ -25,7 +31,7 @@ Patch0:		%{name}-no_strip.patch
 Patch1:		%{name}-ac.patch
 Patch2:		%{name}-pc.patch
 Patch3:		%{name}-krb5flags.patch
-Patch4:		libcurl.fb-changes.diff
+Patch4:		lib%{name}.fb-changes.diff
 URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -37,6 +43,8 @@ BuildRequires:	libidn-devel >= 0.4.1
 BuildRequires:	libtool
 %{?with_ldap:BuildRequires:	openldap-devel}
 BuildRequires:	pkgconfig
+BuildRequires:	rpm >= 4.4.9-56
+BuildRequires:	rpmbuild(macros) >= 1.453
 %if %{with ssl}
 %if %{with gnutls}
 BuildRequires:	gnutls-devel
@@ -105,9 +113,9 @@ curl п╕дтриму╓ багато корисних можливостей, 
 Summary:	curl library
 Summary(pl.UTF-8):	Biblioteka curl
 Group:		Libraries
+%{?with_ares:Requires:	c-ares >= 1.7.0}
 Suggests:	ca-certificates
 Conflicts:	ca-certificates < 20080809-4
-%{?with_ares:Requires:	c-ares >= 1.7.0}
 
 %description libs
 curl library.
