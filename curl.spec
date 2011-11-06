@@ -190,6 +190,8 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %patch3 -p1
 %patch4 -p1
 
+%{__rm} -v m4/lt*.m4 m4/libtool.m4
+
 %build
 %{__libtoolize}
 %{__aclocal} -I m4
