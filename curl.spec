@@ -40,7 +40,7 @@ BuildRequires:	automake
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
 BuildRequires:	libidn-devel >= 0.4.1
 %{?with_rtmp:BuildRequires:	librtmp-devel}
-%{?with_ssh:BuildRequires:	libssh2-devel >= 0.16}
+%{?with_ssh:BuildRequires:	libssh2-devel >= 1.2.8}
 BuildRequires:	libtool
 %{?with_ldap:BuildRequires:	openldap-devel}
 BuildRequires:	pkgconfig
@@ -57,7 +57,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	zlib-devel
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libidn >= 0.4.1
-%{?with_ssh:Requires:	libssh2 >= 0.16}
+%{?with_ssh:Requires:	libssh2 >= 1.2.8}
 Obsoletes:	libcurl2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -136,7 +136,7 @@ Requires:	%{name}-libs = %{version}-%{release}
 %{?with_kerberos5:Requires:	heimdal-devel}
 Requires:	libidn-devel >= 0.4.1
 %{?with_rtmp:Requires:	librtmp-devel}
-%{?with_ssh:Requires:	libssh2-devel >= 0.16}
+%{?with_ssh:Requires:	libssh2-devel >= 1.2.8}
 %{?with_ldap:Requires:	openldap-devel}
 %if %{with ssl}
 %if %{with gnutls}
