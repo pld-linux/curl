@@ -21,13 +21,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.24.0
+Version:	7.25.0
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.lzma
-# Source0-md5:	713d7d7cbc5cfaabd785a2ff905096f2
-Patch0:		%{name}-no_strip.patch
+# Source0-md5:	d0f63a8a14db21e1abdc4862d4ba4a1a
 Patch1:		%{name}-ac.patch
 Patch2:		%{name}-pc.patch
 Patch3:		%{name}-krb5flags.patch
@@ -194,7 +193,6 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
