@@ -1,0 +1,16 @@
+diff -urN curl-7.27.0.org/lib/gtls.c curl-7.27.0/lib/gtls.c
+--- curl-7.27.0.org/lib/gtls.c	2012-06-26 19:50:16.000000000 +0200
++++ curl-7.27.0/lib/gtls.c	2012-08-03 23:26:27.828178591 +0200
+@@ -33,9 +33,12 @@
+ #ifdef USE_GNUTLS
+ 
+ #include <gnutls/gnutls.h>
++#include <gnutls/crypto.h>
+ #include <gnutls/x509.h>
+ #ifndef USE_GNUTLS_NETTLE
+ #include <gcrypt.h>
++#else
++#include <nettle/md5.h>
+ #endif
+ 
+ #ifdef HAVE_SYS_SOCKET_H
