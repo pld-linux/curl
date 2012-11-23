@@ -22,7 +22,7 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	7.28.1
-Release:	1
+Release:	2
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.lzma
@@ -30,7 +30,6 @@ Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.lzma
 Patch1:		%{name}-ac.patch
 Patch2:		%{name}-pc.patch
 Patch3:		%{name}-krb5flags.patch
-Patch4:		%{name}-gnutls.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -195,7 +194,6 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %{__rm} -v m4/lt*.m4 m4/libtool.m4
 
