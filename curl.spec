@@ -4,6 +4,7 @@
 %bcond_without	ssl		# without SSL support
 %bcond_without	kerberos5	# without Heimdal Kerberos 5 support
 %bcond_without	ldap		# without LDAP support
+%bcond_without	metalink	# without metalink support
 %if "%{pld_release}" != "ac"
 %bcond_without	ares		# with c-ares (asynchronous DNS operations) library
 %bcond_with	gnutls		# use GnuTLS instead of OpenSSL
@@ -29,12 +30,15 @@ Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.lzma
 # Source0-md5:	db5948f44e7ef3edbf9a7907af9556ac
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
+# make the curl tool link SSL libraries also used by src/tool_metalink.c
+Patch2:		metalink.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 %{?with_ares:BuildRequires:	c-ares-devel >= 1.7.0}
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
 BuildRequires:	libidn-devel >= 0.4.1
+%{?with_metalink:BuildRequires:	libmetalink-devel}
 %{?with_rtmp:BuildRequires:	librtmp-devel}
 %{?with_ssh:BuildRequires:	libssh2-devel >= 1.2.8}
 BuildRequires:	libtool
@@ -213,16 +217,15 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %endif
 	%{?with_kerberos5:--with-gssapi=%{_prefix}} \
 	%{?with_rtmp:--with-librtmp} \
+	%{?with_metalink:--with-libmetalink} \
 	%{?with_ares:--enable-ares} \
-	%{?with_ldap:--enable-ldaps} \
-	%{!?with_ldap:--disable-ldap} \
+	%{!?with_ldap:--disable-ldap}%{?with_ldap:--enable-ldaps} \
 	--enable-ipv6
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
