@@ -4,6 +4,7 @@
 %bcond_without	ssl		# without SSL support
 %bcond_without	kerberos5	# without Heimdal Kerberos 5 support
 %bcond_without	ldap		# without LDAP support
+%bcond_with	http2		# without HTTP/2.0 support (nghttp2 based)
 %bcond_without	metalink	# without metalink support
 %if "%{pld_release}" != "ac"
 %bcond_without	ares		# with c-ares (asynchronous DNS operations) library
@@ -37,6 +38,7 @@ BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 %{?with_ares:BuildRequires:	c-ares-devel >= 1.7.0}
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
+%{?with_http2:BuildRequires:	nghttp2-devel}
 BuildRequires:	libidn-devel >= 0.4.1
 %{?with_metalink:BuildRequires:	libmetalink-devel}
 %{?with_rtmp:BuildRequires:	librtmp-devel}
@@ -216,11 +218,12 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %endif
 %endif
 	%{?with_kerberos5:--with-gssapi=%{_prefix}} \
-	%{?with_rtmp:--with-librtmp} \
 	%{?with_metalink:--with-libmetalink} \
+	%{?with_rtmp:--with-librtmp} \
+	%{?with_http2:--with-nghttp2} \
 	%{?with_ares:--enable-ares} \
-	%{!?with_ldap:--disable-ldap}%{?with_ldap:--enable-ldaps} \
-	--enable-ipv6
+	--enable-ipv6 \
+	%{!?with_ldap:--disable-ldap}%{?with_ldap:--enable-ldaps}
 
 %{__make}
 
