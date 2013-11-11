@@ -118,6 +118,10 @@ Summary:	curl library
 Summary(pl.UTF-8):	Biblioteka curl
 Group:		Libraries
 %{?with_ares:Requires:	c-ares >= 1.7.0}
+%{?with_ssh:Requires:	libssh2 >= 1.0.0}
+%if %{with ssl} && %{without gnutls}
+BuildRequires:	openssl >= 1.0.1
+%endif
 Suggests:	ca-certificates
 Conflicts:	ca-certificates < 20080809-4
 
