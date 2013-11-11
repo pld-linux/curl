@@ -53,14 +53,13 @@ BuildRequires:	rpmbuild(macros) >= 1.453
 %if %{with gnutls}
 BuildRequires:	gnutls-devel
 %else
-BuildRequires:	openssl-devel >= 0.9.7d
+BuildRequires:	openssl-devel >= 1.0.1
 %endif
 %endif
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	zlib-devel
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libidn >= 0.4.1
-%{?with_ssh:Requires:	libssh2 >= 1.2.8}
 Obsoletes:	libcurl2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -118,9 +117,9 @@ Summary:	curl library
 Summary(pl.UTF-8):	Biblioteka curl
 Group:		Libraries
 %{?with_ares:Requires:	c-ares >= 1.7.0}
-%{?with_ssh:Requires:	libssh2 >= 1.0.0}
+%{?with_ssh:Requires:	libssh2 >= 1.2.8}
 %if %{with ssl} && %{without gnutls}
-BuildRequires:	openssl >= 1.0.1
+Requires:	openssl >= 1.0.1
 %endif
 Suggests:	ca-certificates
 Conflicts:	ca-certificates < 20080809-4
