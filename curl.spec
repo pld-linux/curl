@@ -264,6 +264,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libcurl.la
 %{_includedir}/curl
 %{_pkgconfigdir}/libcurl.pc
+%{_aclocaldir}/libcurl.m4
 %{_mandir}/man1/curl-config.1*
 %{_mandir}/man3/curl_*.3*
 %{_mandir}/man3/libcurl*.3*
