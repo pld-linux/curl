@@ -1,19 +1,18 @@
 #
 # Conditional build:
-%bcond_without	ssh		# without SSH support
-%bcond_without	ssl		# without SSL support
-%bcond_without	kerberos5	# without Heimdal Kerberos 5 support
-%bcond_without	ldap		# without LDAP support
-%bcond_with	http2		# without HTTP/2.0 support (nghttp2 based)
-%bcond_without	metalink	# without metalink support
+%bcond_without	ssh		# SSH support
+%bcond_without	ssl		# SSL support
+%bcond_with	gnutls		# GnuTLS instead of OpenSSL
+%bcond_without	kerberos5	# Heimdal Kerberos 5 support
+%bcond_without	ldap		# LDAP support
+%bcond_with	http2		# HTTP/2.0 support (nghttp2 based)
+%bcond_without	metalink	# metalink support
 %if "%{pld_release}" != "ac"
-%bcond_without	ares		# with c-ares (asynchronous DNS operations) library
-%bcond_with	gnutls		# use GnuTLS instead of OpenSSL
-%bcond_without	rtmp		# without Real Time Media Protocol
+%bcond_without	ares		# c-ares (asynchronous DNS operations) library support
+%bcond_without	rtmp		# Real Time Media Protocol support
 %else
-%bcond_with	ares		# with c-ares (asynchronous DNS operations) library
-%bcond_with	gnutls		# use GnuTLS instead of OpenSSL
-%bcond_with	rtmp		# without Real Time Media Protocol
+%bcond_with	ares		# c-ares (asynchronous DNS operations) library support
+%bcond_with	rtmp		# Real Time Media Protocol support
 %endif
 
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
@@ -23,28 +22,27 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.35.0
+Version:	7.36.0
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.lzma
-# Source0-md5:	ad7d63864414c61246450dc5e2248c7b
+# Source0-md5:	291081121e604b04e0035bfdd736d196
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
-# make the curl tool link SSL libraries also used by src/tool_metalink.c
-Patch2:		metalink.patch
+Patch2:		%{name}-http2.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 %{?with_ares:BuildRequires:	c-ares-devel >= 1.7.0}
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
-%{?with_http2:BuildRequires:	nghttp2-devel}
 BuildRequires:	libidn-devel >= 0.4.1
 %{?with_metalink:BuildRequires:	libmetalink-devel}
 %{?with_rtmp:BuildRequires:	librtmp-devel}
 %{?with_ssh:BuildRequires:	libssh2-devel >= 1.2.8}
 BuildRequires:	libtool
 BuildRequires:	nettle-devel
+%{?with_http2:BuildRequires:	nghttp2-devel >= 0.3}
 %{?with_ldap:BuildRequires:	openldap-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	rpm >= 4.4.9-56
@@ -118,6 +116,7 @@ Summary(pl.UTF-8):	Biblioteka curl
 Group:		Libraries
 %{?with_ares:Requires:	c-ares >= 1.7.0}
 %{?with_ssh:Requires:	libssh2 >= 1.2.8}
+%{?with_http2:Requires:	nghttp2 >= 0.3}
 %if %{with ssl} && %{without gnutls}
 Requires:	openssl >= 1.0.1
 %endif
@@ -143,6 +142,7 @@ Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libidn-devel >= 0.4.1
 %{?with_rtmp:Requires:	librtmp-devel}
 %{?with_ssh:Requires:	libssh2-devel >= 1.2.8}
+%{?with_http2:Requires:	nghttp2-devel >= 0.3}
 %{?with_ldap:Requires:	openldap-devel}
 %if %{with ssl}
 %if %{with gnutls}
@@ -201,8 +201,9 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
-%{__rm} -v m4/lt*.m4 m4/libtool.m4
+%{__rm} m4/lt*.m4 m4/libtool.m4
 
 %build
 %{__libtoolize}
