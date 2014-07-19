@@ -1,16 +1,16 @@
---- curl-7.29.0/configure.ac.orig	2013-02-15 15:38:22.912332897 +0100
-+++ curl-7.29.0/configure.ac	2013-02-15 15:47:10.498977423 +0100
-@@ -1336,7 +1336,7 @@
- 
-   if test -z "$GSSAPI_INCS"; then
-      if test -f "$GSSAPI_ROOT/bin/krb5-config"; then
+--- curl-7.37.1/configure.ac.orig	2014-07-19 10:27:07.972697344 +0200
++++ curl-7.37.1/configure.ac	2014-07-19 10:28:38.279360218 +0200
+@@ -1212,7 +1212,7 @@
+      if test -n "$host_alias" -a -f "$GSSAPI_ROOT/bin/$host_alias-krb5-config"; then
+         GSSAPI_INCS=`$GSSAPI_ROOT/bin/$host_alias-krb5-config --cflags gssapi`
+      elif test -f "$GSSAPI_ROOT/bin/krb5-config"; then
 -        GSSAPI_INCS=`$GSSAPI_ROOT/bin/krb5-config --cflags gssapi`
 +        GSSAPI_INCS=`CFLAGS= $GSSAPI_ROOT/bin/krb5-config --cflags gssapi`
       elif test "$GSSAPI_ROOT" != "yes"; then
          GSSAPI_INCS="-I$GSSAPI_ROOT/include"
       fi
-@@ -1424,7 +1424,7 @@
-         if test -f "$GSSAPI_ROOT/bin/krb5-config"; then
+@@ -1311,7 +1311,7 @@
+         elif test -f "$GSSAPI_ROOT/bin/krb5-config"; then
             dnl krb5-config doesn't have --libs-only-L or similar, put everything
             dnl into LIBS
 -           gss_libs=`$GSSAPI_ROOT/bin/krb5-config --libs gssapi`
