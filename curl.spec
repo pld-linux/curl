@@ -5,7 +5,7 @@
 %bcond_with	gnutls		# GnuTLS instead of OpenSSL
 %bcond_without	kerberos5	# Heimdal Kerberos 5 support
 %bcond_without	ldap		# LDAP support
-%bcond_with	http2		# HTTP/2.0 support (nghttp2 based)
+%bcond_without	http2		# HTTP/2.0 support (nghttp2 based)
 %bcond_without	metalink	# metalink support
 %if "%{pld_release}" != "ac"
 %bcond_without	ares		# c-ares (asynchronous DNS operations) library support
@@ -23,7 +23,7 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	7.41.0
-Release:	1
+Release:	2
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.lzma
