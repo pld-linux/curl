@@ -45,7 +45,7 @@ BuildRequires:	nettle-devel
 %{?with_ldap:BuildRequires:	openldap-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	rpm >= 4.4.9-56
-BuildRequires:	rpmbuild(macros) >= 1.453
+BuildRequires:	rpmbuild(macros) >= 1.527
 %if %{with ssl}
 %if %{with gnutls}
 BuildRequires:	gnutls-devel
@@ -219,13 +219,15 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 	--with-ssl=%{_prefix} \
 %endif
 %endif
-	%{?with_kerberos5:--with-gssapi=%{_prefix}} \
-	%{?with_metalink:--with-libmetalink} \
-	%{?with_rtmp:--with-librtmp} \
-	%{?with_http2:--with-nghttp2} \
-	%{?with_ares:--enable-ares} \
+	%{__with_without kerberos5 gssapi %{_prefix}} \
+	%{__with_without metalink libmetalink} \
+	%{__with_without rtmp librtmp} \
+	%{__with_without http2 nghttp2} \
+	%{__enable_disable ares} \
+	%{__with_without ssh ssh2} \
 	--enable-ipv6 \
-	%{!?with_ldap:--disable-ldap}%{?with_ldap:--enable-ldaps}
+	%{__enable_disable ldap} \
+	%{__enable_disable ldap ldaps}
 
 %{__make}
 
