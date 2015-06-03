@@ -224,7 +224,7 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 	%{__with_without rtmp librtmp} \
 	%{__with_without http2 nghttp2} \
 	%{__enable_disable ares} \
-	%{__with_without ssh ssh2} \
+	%{__with_without ssh libssh2} \
 	--enable-ipv6 \
 	%{__enable_disable ldap} \
 	%{__enable_disable ldap ldaps}
