@@ -22,12 +22,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.42.1
+Version:	7.43.0
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.lzma
-# Source0-md5:	f1e460020a99da039b153e4bf0cd8600
+# Source0-md5:	95df6d1ce9c970289d2997e603d6fd79
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
 URL:		http://curl.haxx.se/
@@ -41,7 +41,7 @@ BuildRequires:	libidn-devel >= 0.4.1
 %{?with_ssh:BuildRequires:	libssh2-devel >= 1.2.8}
 BuildRequires:	libtool
 BuildRequires:	nettle-devel
-%{?with_http2:BuildRequires:	nghttp2-devel >= 0.6}
+%{?with_http2:BuildRequires:	nghttp2-devel >= 1.0}
 %{?with_ldap:BuildRequires:	openldap-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	rpm >= 4.4.9-56
@@ -115,7 +115,7 @@ Summary(pl.UTF-8):	Biblioteka curl
 Group:		Libraries
 %{?with_ares:Requires:	c-ares >= 1.7.0}
 %{?with_ssh:Requires:	libssh2 >= 1.2.8}
-%{?with_http2:Requires:	nghttp2 >= 0.6}
+%{?with_http2:Requires:	nghttp2 >= 1.0}
 %if %{with ssl} && %{without gnutls}
 Requires:	openssl >= 1.0.1
 %endif
@@ -141,7 +141,7 @@ Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libidn-devel >= 0.4.1
 %{?with_rtmp:Requires:	librtmp-devel}
 %{?with_ssh:Requires:	libssh2-devel >= 1.2.8}
-%{?with_http2:Requires:	nghttp2-devel >= 0.6}
+%{?with_http2:Requires:	nghttp2-devel >= 1.0}
 %{?with_ldap:Requires:	openldap-devel}
 %if %{with ssl}
 %if %{with gnutls}
