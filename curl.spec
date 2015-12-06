@@ -22,12 +22,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.45.0
+Version:	7.46.0
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	http://curl.haxx.se/download/%{name}-%{version}.tar.lzma
-# Source0-md5:	c9a0a77f71fdc6b0f925bc3e79eb77f6
+# Source0-md5:	f845c513830d38c1b7ac39a98c1c2b11
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
 URL:		http://curl.haxx.se/
@@ -36,7 +36,8 @@ BuildRequires:	automake
 %{?with_ares:BuildRequires:	c-ares-devel >= 1.7.0}
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
 BuildRequires:	libidn-devel >= 0.4.1
-%{?with_metalink:BuildRequires:	libmetalink-devel}
+%{?with_metalink:BuildRequires:	libmetalink-devel >= 0.1.0}
+BuildRequires:	libpsl-devel
 %{?with_rtmp:BuildRequires:	librtmp-devel}
 %{?with_ssh:BuildRequires:	libssh2-devel >= 1.2.8}
 BuildRequires:	libtool
@@ -139,6 +140,7 @@ Requires:	%{name}-libs = %{version}-%{release}
 %{?with_ares:Requires:	c-ares-devel}
 %{?with_kerberos5:Requires:	heimdal-devel}
 Requires:	libidn-devel >= 0.4.1
+Requires:	libpsl-devel
 %{?with_rtmp:Requires:	librtmp-devel}
 %{?with_ssh:Requires:	libssh2-devel >= 1.2.8}
 %{?with_http2:Requires:	nghttp2-devel >= 1.0}
@@ -196,6 +198,19 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 Цей пакет містить статичну бібліотеку для розробки програм з
 використанням бібліотеки curl.
 
+%package -n zsh-completion-curl
+Summary:	ZSH completion for curl command
+Summary(pl.UTF-8):	Dopełnianianie parametrów w ZSH dla polecenia curl
+Group:		Applications/Shells
+Requires:	%{name} = %{version}-%{release}
+Requires:	zsh
+
+%description -n zsh-completion-curl
+ZSH completion for curl command.
+
+%description -n zsh-completion-curl -l pl.UTF-8
+Dopełnianianie parametrów w ZSH dla polecenia curl.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -211,6 +226,11 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 %{__automake}
 %configure \
 	ac_cv_header_gss_h=no \
+	%{__enable_disable ares} \
+	--enable-ipv6 \
+	%{__enable_disable ldap} \
+	%{__enable_disable ldap ldaps} \
+	--disable-silent-rules \
 %if %{with ssl}
 	--with-ca-bundle=/etc/certs/ca-certificates.crt \
 %if %{with gnutls}
@@ -223,11 +243,7 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 	%{__with_without metalink libmetalink} \
 	%{__with_without rtmp librtmp} \
 	%{__with_without http2 nghttp2} \
-	%{__enable_disable ares} \
-	%{__with_without ssh libssh2} \
-	--enable-ipv6 \
-	%{__enable_disable ldap} \
-	%{__enable_disable ldap ldaps}
+	%{__with_without ssh libssh2}
 
 %{__make}
 
@@ -276,3 +292,7 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libcurl.a
+
+%files -n zsh-completion-curl
+%defattr(644,root,root,755)
+%{_datadir}/zsh/site-functions/_curl
