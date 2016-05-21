@@ -22,12 +22,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.48.0
+Version:	7.49.0
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.haxx.se/download/%{name}-%{version}.tar.lzma
-# Source0-md5:	de75665721e3adb0a1d7e03b90c3d7a2
+# Source0-md5:	f14b50657174e3c91d955f7a3e064e8c
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
 URL:		http://curl.haxx.se/
@@ -250,6 +250,9 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+%{__make} -C scripts install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 # no longer in upstream but a lot of apps tries to include it so we create fake one
