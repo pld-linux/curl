@@ -23,13 +23,14 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	7.49.1
-Release:	2
+Release:	3
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.haxx.se/download/%{name}-%{version}.tar.lzma
 # Source0-md5:	ae5e5e395da413d1fa0864e1d0a3fa57
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
+Patch2:		curl-revert-ssl-freeing.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -215,6 +216,7 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %{__rm} m4/lt*.m4 m4/libtool.m4
 
