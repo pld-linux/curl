@@ -35,7 +35,7 @@ BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 %{?with_ares:BuildRequires:	c-ares-devel >= 1.7.0}
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
-BuildRequires:	libidn-devel >= 0.4.1
+BuildRequires:	libidn2-devel
 %{?with_metalink:BuildRequires:	libmetalink-devel >= 0.1.0}
 BuildRequires:	libpsl-devel
 %{?with_rtmp:BuildRequires:	librtmp-devel}
@@ -57,7 +57,6 @@ BuildRequires:	openssl-devel >= 1.0.1
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	zlib-devel
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	libidn >= 0.4.1
 Obsoletes:	libcurl2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -140,7 +139,7 @@ Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 %{?with_ares:Requires:	c-ares-devel}
 %{?with_kerberos5:Requires:	heimdal-devel}
-Requires:	libidn-devel >= 0.4.1
+Requires:	libidn2-devel
 Requires:	libpsl-devel
 %{?with_rtmp:Requires:	librtmp-devel}
 %{?with_ssh:Requires:	libssh2-devel >= 1.2.8}
