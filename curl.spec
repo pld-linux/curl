@@ -22,12 +22,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.50.1
-Release:	2
+Version:	7.51.0
+Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.haxx.se/download/%{name}-%{version}.tar.lzma
-# Source0-md5:	01ac668b9f78266d72bdb86aa9db0849
+# Source0-md5:	0f876ef6d5776d96b08510461d57db1b
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
 URL:		http://curl.haxx.se/
@@ -268,7 +268,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES COPYING README docs/{BUGS,FAQ,FEATURES,HISTORY,KNOWN_BUGS,MANUAL,SSLCERTS,THANKS,TODO,TheArtOfHttpScripting}
+%doc CHANGES COPYING README docs/{BUGS,FAQ,FEATURES,HISTORY.md,KNOWN_BUGS,MANUAL,SSLCERTS.md,THANKS,TODO,TheArtOfHttpScripting}
 %attr(755,root,root) %{_bindir}/curl
 %{_mandir}/man1/curl.1*
 
@@ -279,7 +279,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc docs/{CONTRIBUTE,INTERNALS,LICENSE-MIXING,RESOURCES}
+%doc docs/{CONTRIBUTE.md,INTERNALS.md,LICENSE-MIXING.md,RESOURCES}
 %attr(755,root,root) %{_bindir}/curl-config
 %attr(755,root,root) %{_libdir}/libcurl.so
 %{_libdir}/libcurl.la
