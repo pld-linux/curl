@@ -22,12 +22,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.51.0
+Version:	7.52.1
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.haxx.se/download/%{name}-%{version}.tar.lzma
-# Source0-md5:	0f876ef6d5776d96b08510461d57db1b
+# Source0-md5:	ddbd157359bc8a9174e11b151254b264
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
 URL:		http://curl.haxx.se/
