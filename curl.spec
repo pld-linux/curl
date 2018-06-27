@@ -239,6 +239,8 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 %else
 	--with-ssl=%{_prefix} \
 %endif
+%else
+	--without-ssl --without-gnutls \
 %endif
 	%{__with_without kerberos5 gssapi %{_prefix}} \
 	%{__with_without metalink libmetalink} \
