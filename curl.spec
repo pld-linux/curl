@@ -199,6 +199,19 @@ Bibliotecas estáticas para desenvolvimento com o curl.
 Цей пакет містить статичну бібліотеку для розробки програм з
 використанням бібліотеки curl.
 
+%package -n fish-completion-%{name}
+Summary:	Fish completion for curl command
+Summary(pl.UTF-8):	Dopełnianie parametrów w fish dla polecenia curl
+Group:		Applications/Shells
+Requires:	%{name} = %{version}-%{release}
+Requires:	fish
+
+%description -n fish-completion-%{name}
+Fish completion for curl command.
+
+%description -n fish-completion-%{name} -l pl.UTF-8
+Dopełnianie parametrów w fish dla polecenia curl.
+
 %package -n zsh-completion-curl
 Summary:	ZSH completion for curl command
 Summary(pl.UTF-8):	Dopełnianianie parametrów w ZSH dla polecenia curl
@@ -242,6 +255,7 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 %else
 	--without-ssl --without-gnutls \
 %endif
+	--with-fish-functions-dir=%{fish_compdir} \
 	%{__with_without kerberos5 gssapi %{_prefix}} \
 	%{__with_without metalink libmetalink} \
 	%{__with_without rtmp librtmp} \
@@ -298,6 +312,10 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libcurl.a
+
+%files -n fish-completion-%{name}
+%defattr(644,root,root,755)
+%{fish_compdir}/%{name}.fish
 
 %files -n zsh-completion-curl
 %defattr(644,root,root,755)
