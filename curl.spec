@@ -119,6 +119,7 @@ Group:		Libraries
 %{?with_ssh:Requires:	libssh2 >= 1.2.8}
 %{?with_http2:Requires:	nghttp2-libs >= 1.9.0}
 %if %{with ssl} && %{without gnutls}
+Requires:	libbrotli >= 1.0.0
 Requires:	openssl >= 1.0.1
 %endif
 Suggests:	ca-certificates
