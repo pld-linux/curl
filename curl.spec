@@ -23,12 +23,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.69.1
+Version:	7.71.1
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.haxx.se/download/%{name}-%{version}.tar.xz
-# Source0-md5:	eb77b3acf050df4afbc780367e0e7064
+# Source0-md5:	b54b386057846ce3edd3584b19741569
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
 URL:		http://curl.haxx.se/
@@ -44,14 +44,14 @@ BuildRequires:	libpsl-devel
 %{?with_ssh:BuildRequires:	libssh2-devel >= 1.2.8}
 BuildRequires:	libtool
 BuildRequires:	nettle-devel
-%{?with_http2:BuildRequires:	nghttp2-devel >= 1.9.0}
+%{?with_http2:BuildRequires:	nghttp2-devel >= 1.12.0}
 %{?with_ldap:BuildRequires:	openldap-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpmbuild(macros) >= 1.527
 %if %{with ssl}
 %if %{with gnutls}
-BuildRequires:	gnutls-devel
+BuildRequires:	gnutls-devel >= 3.1.10
 %else
 BuildRequires:	openssl-devel >= 1.0.1
 %endif
@@ -116,8 +116,9 @@ Summary:	curl library
 Summary(pl.UTF-8):	Biblioteka curl
 Group:		Libraries
 %{?with_ares:Requires:	c-ares >= 1.7.0}
+%{?with_gnutls:Requires:	gnutls-libs >= 3.1.10}
 %{?with_ssh:Requires:	libssh2 >= 1.2.8}
-%{?with_http2:Requires:	nghttp2-libs >= 1.9.0}
+%{?with_http2:Requires:	nghttp2-libs >= 1.12.0}
 %if %{with ssl} && %{without gnutls}
 Requires:	libbrotli >= 1.0.0
 Requires:	openssl >= 1.0.1
@@ -146,11 +147,11 @@ Requires:	libidn2-devel
 Requires:	libpsl-devel
 %{?with_rtmp:Requires:	librtmp-devel}
 %{?with_ssh:Requires:	libssh2-devel >= 1.2.8}
-%{?with_http2:Requires:	nghttp2-devel >= 1.9.0}
+%{?with_http2:Requires:	nghttp2-devel >= 1.12.0}
 %{?with_ldap:Requires:	openldap-devel}
 %if %{with ssl}
 %if %{with gnutls}
-Requires:	gnutls-devel
+Requires:	gnutls-devel >= 3.1.10
 %else
 Requires:	openssl-devel >= 0.9.7c
 %endif
