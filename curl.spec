@@ -23,12 +23,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.71.1
+Version:	7.72.0
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.haxx.se/download/%{name}-%{version}.tar.xz
-# Source0-md5:	b54b386057846ce3edd3584b19741569
+# Source0-md5:	b5579dcc9ae76478f4e070fb4f820223
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
 URL:		http://curl.haxx.se/
@@ -58,6 +58,7 @@ BuildRequires:	openssl-devel >= 1.0.1
 %endif
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	zlib-devel
+BuildRequires:	zstd-devel
 Requires:	%{name}-libs = %{version}-%{release}
 Obsoletes:	libcurl2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -157,6 +158,7 @@ Requires:	openssl-devel >= 0.9.7c
 %endif
 %endif
 Requires:	zlib-devel
+Requires:	zstd-devel
 Obsoletes:	libcurl2-devel
 
 %description devel
