@@ -24,7 +24,7 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	7.73.0
-Release:	1
+Release:	2
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.haxx.se/download/%{name}-%{version}.tar.xz
@@ -271,11 +271,15 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__make} -C scripts install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libcurl.la
 
 # no longer in upstream but a lot of apps tries to include it so we create fake one
 [ -e $RPM_BUILD_ROOT%{_includedir}/curl/types.h ] && exit 1
@@ -303,7 +307,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc docs/{CONTRIBUTE.md,INTERNALS.md}
 %attr(755,root,root) %{_bindir}/curl-config
 %attr(755,root,root) %{_libdir}/libcurl.so
-%{_libdir}/libcurl.la
 %{_includedir}/curl
 %{_pkgconfigdir}/libcurl.pc
 %{_aclocaldir}/libcurl.m4
