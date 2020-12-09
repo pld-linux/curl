@@ -24,7 +24,7 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	7.74.0
-Release:	1
+Release:	2
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.haxx.se/download/%{name}-%{version}.tar.xz
@@ -293,7 +293,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES COPYING README docs/{BUGS.md,FAQ,FEATURES,HISTORY.md,KNOWN_BUGS,SSLCERTS.md,THANKS,TODO,TheArtOfHttpScripting.md}
+%doc CHANGES COPYING README docs/{BUGS.md,FAQ,FEATURES.md,HISTORY.md,KNOWN_BUGS,SSLCERTS.md,THANKS,TODO,TheArtOfHttpScripting.md}
 %attr(755,root,root) %{_bindir}/curl
 %{_mandir}/man1/curl.1*
 
