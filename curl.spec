@@ -4,6 +4,7 @@
 %bcond_without	ssh		# SSH support
 %bcond_without	ssl		# SSL support
 %bcond_with	gnutls		# GnuTLS instead of OpenSSL
+%bcond_without	gsasl		# SCRAM support with gsasl
 %bcond_without	kerberos5	# Heimdal Kerberos 5 support
 %bcond_without	ldap		# LDAP support
 %bcond_without	http2		# HTTP/2.0 support (nghttp2 based)
@@ -23,18 +24,19 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.75.0
+Version:	7.76.0
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.haxx.se/download/%{name}-%{version}.tar.xz
-# Source0-md5:	9730df8636d67b4e256ebc49daf27246
+# Source0-md5:	41178ceea57c863f883b6fe2c3ac276f
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 %{?with_ares:BuildRequires:	c-ares-devel >= 1.7.0}
+%{?with_gsasl:BuildRequires:	gsasl-devel}
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
 BuildRequires:	libbrotli-devel >= 1.0.0
 BuildRequires:	libidn2-devel
@@ -57,6 +59,7 @@ BuildRequires:	openssl-devel >= 1.0.1
 %endif
 %endif
 BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRequires:	zlib-devel
 BuildRequires:	zstd-devel
 Requires:	%{name}-libs = %{version}-%{release}
@@ -142,6 +145,7 @@ Summary(uk.UTF-8):	Файли для розробки з використанн�
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 %{?with_ares:Requires:	c-ares-devel}
+%{?with_gsasl:Requires:	gsasl-devel}
 %{?with_kerberos5:Requires:	heimdal-devel}
 Requires:	libbrotli-devel >= 1.0.0
 Requires:	libidn2-devel
@@ -246,6 +250,7 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 %configure \
 	ac_cv_header_gss_h=no \
 	%{__enable_disable ares} \
+	%{__enable_disable gsasl} \
 	--enable-ipv6 \
 	%{__enable_disable ldap} \
 	%{__enable_disable ldap ldaps} \
