@@ -50,6 +50,7 @@ BuildRequires:	nettle-devel
 %{?with_ldap:BuildRequires:	openldap-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	rpm >= 4.4.9-56
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.527
 %if %{with ssl}
 %if %{with gnutls}
@@ -214,6 +215,7 @@ Summary(pl.UTF-8):	Dopełnianie parametrów w fish dla polecenia curl
 Group:		Applications/Shells
 Requires:	%{name} = %{version}-%{release}
 Requires:	fish
+BuildArch:	noarch
 
 %description -n fish-completion-%{name}
 Fish completion for curl command.
@@ -227,6 +229,7 @@ Summary(pl.UTF-8):	Dopełnianianie parametrów w ZSH dla polecenia curl
 Group:		Applications/Shells
 Requires:	%{name} = %{version}-%{release}
 Requires:	zsh
+BuildArch:	noarch
 
 %description -n zsh-completion-curl
 ZSH completion for curl command.
@@ -328,7 +331,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n fish-completion-%{name}
 %defattr(644,root,root,755)
-%{fish_compdir}/%{name}.fish
+%{fish_compdir}/curl.fish
 
 %files -n zsh-completion-curl
 %defattr(644,root,root,755)
