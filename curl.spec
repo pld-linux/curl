@@ -8,7 +8,6 @@
 %bcond_without	kerberos5	# Heimdal Kerberos 5 support
 %bcond_without	ldap		# LDAP support
 %bcond_without	http2		# HTTP/2.0 support (nghttp2 based)
-%bcond_without	metalink	# metalink support
 %if "%{pld_release}" != "ac"
 %bcond_without	ares		# c-ares (asynchronous DNS operations) library support
 %bcond_without	rtmp		# Real Time Media Protocol support
@@ -24,12 +23,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.77.0
+Version:	7.78.0
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.haxx.se/download/%{name}-%{version}.tar.xz
-# Source0-md5:	3cf78c539cae019cf96ba38571706e06
+# Source0-md5:	419c2461366cf404160a820f7a902b7e
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
 URL:		http://curl.haxx.se/
@@ -40,7 +39,6 @@ BuildRequires:	automake
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
 BuildRequires:	libbrotli-devel >= 1.0.0
 BuildRequires:	libidn2-devel
-%{?with_metalink:BuildRequires:	libmetalink-devel >= 0.1.0}
 BuildRequires:	libpsl-devel
 %{?with_rtmp:BuildRequires:	librtmp-devel}
 %{?with_ssh:BuildRequires:	libssh2-devel >= 1.2.8}
@@ -270,7 +268,6 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 %endif
 	--with-fish-functions-dir=%{fish_compdir} \
 	%{__with_without kerberos5 gssapi %{_prefix}} \
-	%{__with_without metalink libmetalink} \
 	%{__with_without rtmp librtmp} \
 	%{__with_without http2 nghttp2} \
 	%{__with_without ssh libssh2}
