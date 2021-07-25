@@ -259,12 +259,12 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 %if %{with ssl}
 	--with-ca-bundle=/etc/certs/ca-certificates.crt \
 %if %{with gnutls}
-	--with-gnutls --without-ssl \
+	--with-gnutls --without-openssl \
 %else
-	--with-ssl=%{_prefix} \
+	--with-openssl=%{_prefix} \
 %endif
 %else
-	--without-ssl --without-gnutls \
+	--without-ssl \
 %endif
 	--with-fish-functions-dir=%{fish_compdir} \
 	%{__with_without kerberos5 gssapi %{_prefix}} \
