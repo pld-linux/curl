@@ -24,7 +24,7 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	7.79.1
-Release:	2
+Release:	3
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.haxx.se/download/%{name}-%{version}.tar.xz
@@ -34,7 +34,7 @@ Patch1:		%{name}-krb5flags.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
-%{?with_ares:BuildRequires:	c-ares-devel >= 1.7.0}
+%{?with_ares:BuildRequires:	c-ares-devel >= 1.17.0}
 %{?with_gsasl:BuildRequires:	gsasl-devel}
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
 BuildRequires:	libbrotli-devel >= 1.0.0
@@ -118,7 +118,7 @@ curl п╕дтриму╓ багато корисних можливостей, 
 Summary:	curl library
 Summary(pl.UTF-8):	Biblioteka curl
 Group:		Libraries
-%{?with_ares:Requires:	c-ares >= 1.7.0}
+%{?with_ares:Requires:	c-ares >= 1.17.0}
 %{?with_gnutls:Requires:	gnutls-libs >= 3.1.10}
 %{?with_ssh:Requires:	libssh2 >= 1.2.8}
 %{?with_http2:Requires:	nghttp2-libs >= 1.12.0}
