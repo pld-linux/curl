@@ -1,4 +1,4 @@
-# TODO: ngtpc2/nghttp3 when ready (packages released, support working in curl)
+# TODO: ngtpc2/nghttp3 when ready (packages released, support working in curl) or quiche
 #
 # Conditional build:
 %bcond_without	ssh		# SSH support
