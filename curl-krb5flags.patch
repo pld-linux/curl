@@ -1,14 +1,14 @@
 --- curl-7.43.0/configure.ac.orig	2015-06-24 21:11:53.330168712 +0200
 +++ curl-7.43.0/configure.ac	2015-06-24 21:19:26.686816353 +0200
 @@ -1193,7 +1193,7 @@
-   CURL_CHECK_PKGCONFIG(mit-krb5-gssapi)
+   fi
    if test -z "$GSSAPI_INCS"; then
       if test -n "$host_alias" -a -f "$GSSAPI_ROOT/bin/$host_alias-krb5-config"; then
 -        GSSAPI_INCS=`$GSSAPI_ROOT/bin/$host_alias-krb5-config --cflags gssapi`
 +        GSSAPI_INCS=`CFLAGS= $GSSAPI_ROOT/bin/$host_alias-krb5-config --cflags gssapi`
       elif test "$PKGCONFIG" != "no" ; then
          GSSAPI_INCS=`$PKGCONFIG --cflags mit-krb5-gssapi`
-      elif test "$GSSAPI_ROOT" != "yes"; then
+      elif test -f "$KRB5CONFIG"; then
 @@ -1288,7 +1288,7 @@
          if test -n "$host_alias" -a -f "$GSSAPI_ROOT/bin/$host_alias-krb5-config"; then
             dnl krb5-config doesn't have --libs-only-L or similar, put everything
