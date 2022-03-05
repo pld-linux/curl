@@ -1,4 +1,4 @@
-# TODO: ngtpc2/nghttp3 when ready (packages released, support working in curl) or quiche
+# TODO: ngtpc2/nghttp3 or quiche for HTTP3?
 #
 # Conditional build:
 %bcond_without	ssh		# SSH support
@@ -8,6 +8,7 @@
 %bcond_without	kerberos5	# Heimdal Kerberos 5 support
 %bcond_without	ldap		# LDAP support
 %bcond_without	http2		# HTTP/2.0 support (nghttp2 based)
+%bcond_with	http3		# HTTP/3.0 support (nghttp3/ngtcp2 based)
 %if "%{pld_release}" != "ac"
 %bcond_without	ares		# c-ares (asynchronous DNS operations) library support
 %bcond_without	rtmp		# Real Time Media Protocol support
@@ -45,6 +46,9 @@ BuildRequires:	libpsl-devel
 BuildRequires:	libtool
 BuildRequires:	nettle-devel
 %{?with_http2:BuildRequires:	nghttp2-devel >= 1.12.0}
+%{?with_http3:BuildRequires:	nghttp3-devel}
+# with gnutls or openssl crypto, conforming to chosen curl crypto library
+%{?with_http3:BuildRequires:	ngtcp2-devel}
 %{?with_ldap:BuildRequires:	openldap-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	rpm >= 4.4.9-56
@@ -270,6 +274,8 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 	%{__with_without kerberos5 gssapi %{_prefix}} \
 	%{__with_without rtmp librtmp} \
 	%{__with_without http2 nghttp2} \
+	%{__with_without http3 nghttp3} \
+	%{__with_without http3 ngtcp2} \
 	%{__with_without ssh libssh2}
 
 %{__make}
