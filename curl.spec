@@ -1,4 +1,4 @@
-# TODO: ngtpc2/nghttp3 or quiche for HTTP3?
+# TODO: ngtpc2/nghttp3 or quiche or msh3 for HTTP3?
 #
 # Conditional build:
 %bcond_without	ssh		# SSH support
@@ -24,12 +24,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	7.82.0
+Version:	7.83.0
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.haxx.se/download/%{name}-%{version}.tar.xz
-# Source0-md5:	ce05eb61ef7c398feb7dbe23122d0bd9
+# Source0-md5:	b7924acdea33dedc3150a044789ed0bb
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
 URL:		http://curl.haxx.se/
@@ -256,6 +256,7 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 	ac_cv_header_gss_h=no \
 	%{__enable_disable ares} \
 	%{__enable_disable gsasl} \
+	--enable-headers-api \
 	--enable-ipv6 \
 	%{__enable_disable ldap} \
 	%{__enable_disable ldap ldaps} \
