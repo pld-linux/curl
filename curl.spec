@@ -255,7 +255,7 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 %configure \
 	ac_cv_header_gss_h=no \
 	%{__enable_disable ares} \
-	%{__enable_disable gsasl} \
+	%{__with_without gsasl libgsasl} \
 	--enable-headers-api \
 	--enable-ipv6 \
 	%{__enable_disable ldap} \
