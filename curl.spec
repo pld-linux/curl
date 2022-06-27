@@ -32,6 +32,7 @@ Source0:	https://curl.haxx.se/download/%{name}-%{version}.tar.xz
 # Source0-md5:	6ce66afa416bb11b8f39cc9e059afd5b
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
+Patch2:		sched.patch
 URL:		http://curl.haxx.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -243,6 +244,7 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %{__rm} m4/lt*.m4 m4/libtool.m4
 
