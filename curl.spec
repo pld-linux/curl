@@ -67,7 +67,7 @@ BuildRequires:	xz
 BuildRequires:	zlib-devel
 BuildRequires:	zstd-devel
 Requires:	%{name}-libs = %{version}-%{release}
-Obsoletes:	libcurl2
+Obsoletes:	libcurl2 < 7.12
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -167,7 +167,7 @@ Requires:	openssl-devel >= 0.9.7c
 %endif
 Requires:	zlib-devel
 Requires:	zstd-devel
-Obsoletes:	libcurl2-devel
+Obsoletes:	libcurl2-devel < 7.12
 
 %description devel
 Header files and development documentation for curl library.
