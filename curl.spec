@@ -28,11 +28,11 @@ Version:	8.0.1
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
-Source0:	https://curl.haxx.se/download/%{name}-%{version}.tar.xz
+Source0:	https://curl.se/download/%{name}-%{version}.tar.xz
 # Source0-md5:	f6c2fdeb30ad30234378a56c28350845
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
-URL:		http://curl.haxx.se/
+URL:		https://curl.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 %{?with_ares:BuildRequires:	c-ares-devel >= 1.17.0}
