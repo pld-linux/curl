@@ -146,7 +146,7 @@ Summary(pt_BR.UTF-8):	Arquivos de cabeçalho e bibliotecas de desenvolvimento
 Summary(ru.UTF-8):	Файлы для разработки с использованием библиотеки curl
 Summary(uk.UTF-8):	Файли для розробки з використанням бібліотеки curl
 Group:		Development/Libraries
-Requires:	%{name}-libs = %{version}-%{release}
+Requires:	%{name}-libs%{?_isa} = %{version}-%{release}
 %{?with_ares:Requires:	c-ares-devel}
 %{?with_gsasl:Requires:	gsasl-devel}
 %{?with_kerberos5:Requires:	heimdal-devel}
