@@ -42,7 +42,7 @@ BuildRequires:	libbrotli-devel >= 1.0.0
 BuildRequires:	libidn2-devel
 BuildRequires:	libpsl-devel
 %{?with_rtmp:BuildRequires:	librtmp-devel}
-%{?with_ssh:BuildRequires:	libssh2-devel >= 1.2.8}
+%{?with_ssh:BuildRequires:	libssh2-devel >= 1.11.0}
 BuildRequires:	libtool
 BuildRequires:	nettle-devel
 %{?with_http2:BuildRequires:	nghttp2-devel >= 1.15.0}
@@ -124,7 +124,7 @@ Summary(pl.UTF-8):	Biblioteka curl
 Group:		Libraries
 %{?with_ares:Requires:	c-ares >= 1.17.0}
 %{?with_gnutls:Requires:	gnutls-libs >= 3.1.10}
-%{?with_ssh:Requires:	libssh2 >= 1.2.8}
+%{?with_ssh:Requires:	libssh2 >= 1.11.0}
 %{?with_http2:Requires:	nghttp2-libs >= 1.15.0}
 %if %{with ssl} && %{without gnutls}
 Requires:	libbrotli >= 1.0.0
@@ -154,7 +154,7 @@ Requires:	libbrotli-devel >= 1.0.0
 Requires:	libidn2-devel
 Requires:	libpsl-devel
 %{?with_rtmp:Requires:	librtmp-devel}
-%{?with_ssh:Requires:	libssh2-devel >= 1.2.8}
+%{?with_ssh:Requires:	libssh2-devel >= 1.11.0}
 %{?with_http2:Requires:	nghttp2-devel >= 1.15.0}
 %{?with_ldap:Requires:	openldap-devel}
 %if %{with ssl}
