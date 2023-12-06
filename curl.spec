@@ -1,6 +1,7 @@
 # TODO: ngtpc2/nghttp3 or quiche or msh3 for HTTP3?
 #
 # Conditional build:
+%bcond_without	static_libs	# static library
 %bcond_without	ssh		# SSH support
 %bcond_without	ssl		# SSL support
 %bcond_with	gnutls		# GnuTLS instead of OpenSSL
@@ -254,6 +255,7 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 %{__automake}
 %configure \
 	ac_cv_header_gss_h=no \
+	%{__enable_disable static_libs static} \
 	%{__enable_disable ares} \
 	%{__with_without gsasl libgsasl} \
 	--enable-headers-api \
@@ -331,9 +333,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/CURLMOPT_*.3*
 %{_mandir}/man3/CURLSHOPT_*.3*
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libcurl.a
+%endif
 
 %files -n fish-completion-%{name}
 %defattr(644,root,root,755)
