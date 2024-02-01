@@ -1,12 +1,12 @@
-diff -urN curl-7.12.1.org/configure.ac curl-7.12.1/configure.ac
---- curl-7.12.1.org/configure.ac	2004-08-13 02:20:37.003335512 +0200
-+++ curl-7.12.1/configure.ac	2004-08-13 02:21:07.172749064 +0200
-@@ -392,7 +392,7 @@
+--- curl-8.6.0/configure.ac.orig	2024-02-01 00:31:28.101062850 +0100
++++ curl-8.6.0/configure.ac	2024-02-01 00:53:46.029103873 +0100
+@@ -1660,7 +1660,8 @@
+ {
   struct sockaddr_in6 s;
   (void)s;
-  if (socket(AF_INET6, SOCK_STREAM, 0) < 0)
--   exit(1);
-+   exit(0);
-  else
-    exit(0);
+- return socket(AF_INET6, SOCK_STREAM, 0) < 0;
++ socket(AF_INET6, SOCK_STREAM, 0);
++ return 0;
  }
+ ]])
+ ],
