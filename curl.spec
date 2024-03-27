@@ -25,12 +25,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	8.6.0
+Version:	8.7.1
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.se/download/%{name}-%{version}.tar.xz
-# Source0-md5:	8f28f7e08c91cc679a45fccf66184fbc
+# Source0-md5:	f4f37253c5f1ad9ee85fa6215fdfeb42
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
 URL:		https://curl.se/
@@ -275,6 +275,7 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 	--without-ssl \
 %endif
 	--with-fish-functions-dir=%{fish_compdir} \
+	--with-zsh-functions-dir=%{zsh_compdir} \
 	%{__with_without kerberos5 gssapi %{_prefix}} \
 	%{__with_without rtmp librtmp} \
 	%{__with_without http2 nghttp2} \
@@ -345,4 +346,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n zsh-completion-curl
 %defattr(644,root,root,755)
-%{_datadir}/zsh/site-functions/_curl
+%{zsh_compdir}/_curl
