@@ -25,12 +25,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	8.8.0
-Release:	2
+Version:	8.9.0
+Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.se/download/%{name}-%{version}.tar.xz
-# Source0-md5:	e1062de8a9b252a75fc42e2252746bd8
+# Source0-md5:	6f6d2ff25c2a8fa8602511dc33201cc4
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
 URL:		https://curl.se/
@@ -326,6 +326,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/curl
 %{_pkgconfigdir}/libcurl.pc
 %{_aclocaldir}/libcurl.m4
+%{_mandir}/man1/curl-config.1*
 %{_mandir}/man3/curl_*.3*
 %{_mandir}/man3/libcurl*.3*
 %{_mandir}/man3/CURLINFO_*.3*
