@@ -26,13 +26,14 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	8.11.0
-Release:	1
+Release:	2
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.se/download/%{name}-%{version}.tar.xz
 # Source0-md5:	49dd886ac84ed3de693464f78f1ee926
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
+Patch2:		disable-ldap-pc.patch
 URL:		https://curl.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -244,6 +245,7 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %{__rm} m4/lt*.m4 m4/libtool.m4
 
