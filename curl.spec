@@ -25,15 +25,14 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	8.11.0
-Release:	2
+Version:	8.11.1
+Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.se/download/%{name}-%{version}.tar.xz
-# Source0-md5:	49dd886ac84ed3de693464f78f1ee926
+# Source0-md5:	25e65a5156ca4928060b61cb051813db
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
-Patch2:		disable-ldap-pc.patch
 URL:		https://curl.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -245,7 +244,6 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %{__rm} m4/lt*.m4 m4/libtool.m4
 
