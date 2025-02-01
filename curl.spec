@@ -66,7 +66,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
 BuildRequires:	zstd-devel
-Requires:	%{name}-libs = %{version}-%{release}
+Requires:	%{name}-libs%{?_isa} = %{version}-%{release}
 Obsoletes:	libcurl2 < 7.12
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -128,8 +128,8 @@ Group:		Libraries
 %{?with_ssh:Requires:	libssh2%{?_isa} >= 1.11.0}
 %{?with_http2:Requires:	nghttp2-libs >= 1.15.0}
 %if %{with ssl} && %{without gnutls}
-Requires:	libbrotli >= 1.0.0
-Requires:	openssl >= 1.0.1
+Requires:	libbrotli%{?_isa} >= 1.0.0
+Requires:	openssl%{?_isa} >= 1.0.1
 %endif
 Suggests:	ca-certificates
 Conflicts:	ca-certificates < 20080809-4
@@ -148,25 +148,25 @@ Summary(ru.UTF-8):	Файлы для разработки с использов�
 Summary(uk.UTF-8):	Файли для розробки з використанням бібліотеки curl
 Group:		Development/Libraries
 Requires:	%{name}-libs%{?_isa} = %{version}-%{release}
-%{?with_ares:Requires:	c-ares-devel}
-%{?with_gsasl:Requires:	gsasl-devel}
-%{?with_kerberos5:Requires:	heimdal-devel}
-Requires:	libbrotli-devel >= 1.0.0
-Requires:	libidn2-devel
-Requires:	libpsl-devel
-%{?with_rtmp:Requires:	librtmp-devel}
+%{?with_ares:Requires:	c-ares-devel%{?_isa}}
+%{?with_gsasl:Requires:	gsasl-devel%{?_isa}}
+%{?with_kerberos5:Requires:	heimdal-devel%{?_isa}}
+Requires:	libbrotli-devel%{?_isa} >= 1.0.0
+Requires:	libidn2-devel%{?_isa}
+Requires:	libpsl-devel%{?_isa}
+%{?with_rtmp:Requires:	librtmp-devel%{?_isa}}
 %{?with_ssh:Requires:	libssh2-devel%{?_isa} >= 1.11.0}
-%{?with_http2:Requires:	nghttp2-devel >= 1.15.0}
-%{?with_ldap:Requires:	openldap-devel}
+%{?with_http2:Requires:	nghttp2-devel%{?_isa} >= 1.15.0}
+%{?with_ldap:Requires:	openldap-devel%{?_isa}}
 %if %{with ssl}
 %if %{with gnutls}
-Requires:	gnutls-devel >= 3.1.10
+Requires:	gnutls-devel%{?_isa} >= 3.1.10
 %else
-Requires:	openssl-devel >= 0.9.7c
+Requires:	openssl-devel%{?_isa} >= 0.9.7c
 %endif
 %endif
-Requires:	zlib-devel
-Requires:	zstd-devel
+Requires:	zlib-devel%{?_isa}
+Requires:	zstd-devel%{?_isa}
 Obsoletes:	libcurl2-devel < 7.12
 
 %description devel
@@ -193,7 +193,7 @@ Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento com o curl
 Summary(ru.UTF-8):	Статические библиотеки для разработки с использованием библиотеки curl
 Summary(uk.UTF-8):	Статичні бібліотеки для розробки з використанням бібліотеки curl
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-devel%{?_isa} = %{version}-%{release}
 
 %description static
 Static version of curl library.
