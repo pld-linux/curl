@@ -242,8 +242,8 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 
 %{__rm} m4/lt*.m4 m4/libtool.m4
 
