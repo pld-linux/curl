@@ -2,9 +2,9 @@
 +++ curl-8.6.0/configure.ac	2024-02-01 00:53:46.029103873 +0100
 @@ -1660,7 +1660,8 @@
        {
-         struct sockaddr_in6 s;
+         int s = (int)sizeof(struct sockaddr_in6);
          (void)s;
--        return socket(AF_INET6, SOCK_STREAM, 0) < 0;
+-        return socket(AF_INET6, SOCK_STREAM, 0) > 0;
 +        socket(AF_INET6, SOCK_STREAM, 0);
 +        return 0;
        }

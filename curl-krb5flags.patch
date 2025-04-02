@@ -10,11 +10,11 @@
        GSSAPI_INCS=`$PKGCONFIG --cflags mit-krb5-gssapi`
      elif test -f "$KRB5CONFIG"; then
 @@ -1288,7 +1288,7 @@
-         if test -n "$host_alias" -a -f "$GSSAPI_ROOT/bin/$host_alias-krb5-config"; then
-           dnl krb5-config doesn't have --libs-only-L or similar, put everything
-           dnl into LIBS
--          gss_libs=`$GSSAPI_ROOT/bin/$host_alias-krb5-config --libs gssapi`
-+          gss_libs=`CFLAGS= $GSSAPI_ROOT/bin/$host_alias-krb5-config --libs gssapi`
-           LIBS="$gss_libs $LIBS"
-         elif test "$PKGCONFIG" != "no"; then
-           gss_libs=`$PKGCONFIG --libs mit-krb5-gssapi`
+       if test -n "$host_alias" -a -f "$GSSAPI_ROOT/bin/$host_alias-krb5-config"; then
+         dnl krb5-config doesn't have --libs-only-L or similar, put everything
+         dnl into LIBS
+-        gss_libs=`$GSSAPI_ROOT/bin/$host_alias-krb5-config --libs gssapi`
++        gss_libs=`CFLAGS= $GSSAPI_ROOT/bin/$host_alias-krb5-config --libs gssapi`
+         LIBS="$gss_libs $LIBS"
+       elif test "$PKGCONFIG" != "no"; then
+         gss_libs=`$PKGCONFIG --libs mit-krb5-gssapi`
