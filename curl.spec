@@ -26,7 +26,7 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	8.15.0
-Release:	1
+Release:	2
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.se/download/%{name}-%{version}.tar.xz
@@ -43,7 +43,7 @@ BuildRequires:	libbrotli-devel >= 1.0.0
 BuildRequires:	libidn2-devel
 BuildRequires:	libpsl-devel
 %{?with_rtmp:BuildRequires:	librtmp-devel}
-%{?with_ssh:BuildRequires:	libssh2-devel >= 1.11.0}
+%{?with_ssh:BuildRequires:	libssh2-devel >= 1.11.1}
 BuildRequires:	libtool
 BuildRequires:	nettle-devel
 %{?with_http2:BuildRequires:	nghttp2-devel >= 1.15.0}
@@ -125,7 +125,7 @@ Summary(pl.UTF-8):	Biblioteka curl
 Group:		Libraries
 %{?with_ares:Requires:	c-ares >= 1.17.0}
 %{?with_gnutls:Requires:	gnutls-libs >= 3.1.10}
-%{?with_ssh:Requires:	libssh2%{?_isa} >= 1.11.0}
+%{?with_ssh:Requires:	libssh2%{?_isa} >= 1.11.1}
 %{?with_http2:Requires:	nghttp2-libs >= 1.15.0}
 %if %{with ssl} && %{without gnutls}
 Requires:	libbrotli%{?_isa} >= 1.0.0
@@ -155,7 +155,7 @@ Requires:	libbrotli-devel%{?_isa} >= 1.0.0
 Requires:	libidn2-devel%{?_isa}
 Requires:	libpsl-devel%{?_isa}
 %{?with_rtmp:Requires:	librtmp-devel%{?_isa}}
-%{?with_ssh:Requires:	libssh2-devel%{?_isa} >= 1.11.0}
+%{?with_ssh:Requires:	libssh2-devel%{?_isa} >= 1.11.1}
 %{?with_http2:Requires:	nghttp2-devel%{?_isa} >= 1.15.0}
 %{?with_ldap:Requires:	openldap-devel%{?_isa}}
 %if %{with ssl}
