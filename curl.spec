@@ -25,12 +25,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	8.15.0
-Release:	2
+Version:	8.16.0
+Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.se/download/%{name}-%{version}.tar.xz
-# Source0-md5:	b8872bb6cc5d18d03bea8ff5090b2b81
+# Source0-md5:	3b5aae755714b338af0f66726bceb62a
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
 URL:		https://curl.se/
@@ -51,6 +51,7 @@ BuildRequires:	nettle-devel
 # with gnutls or openssl crypto, conforming to chosen curl crypto library
 %{?with_http3:BuildRequires:	ngtcp2-devel}
 %{?with_ldap:BuildRequires:	openldap-devel}
+BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-build >= 4.6
@@ -332,8 +333,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/curl_*.3*
 %{_mandir}/man3/libcurl*.3*
 %{_mandir}/man3/CURLINFO_*.3*
-%{_mandir}/man3/CURLOPT_*.3*
+%{_mandir}/man3/CURLMINFO*.3*
 %{_mandir}/man3/CURLMOPT_*.3*
+%{_mandir}/man3/CURLOPT_*.3*
 %{_mandir}/man3/CURLSHOPT_*.3*
 
 %if %{with static_libs}
