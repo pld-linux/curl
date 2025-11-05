@@ -6,7 +6,7 @@
 %bcond_without	ssl		# SSL support
 %bcond_with	gnutls		# GnuTLS instead of OpenSSL
 %bcond_without	gsasl		# SCRAM support with gsasl
-%bcond_without	kerberos5	# Heimdal Kerberos 5 support
+%bcond_with	kerberos5	# Heimdal Kerberos 5 support
 %bcond_without	ldap		# LDAP support
 %bcond_without	http2		# HTTP/2.0 support (nghttp2 based)
 %bcond_with	http3		# HTTP/3.0 support (nghttp3/ngtcp2 based)
@@ -25,12 +25,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	8.16.0
+Version:	8.17.0
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.se/download/%{name}-%{version}.tar.xz
-# Source0-md5:	3b5aae755714b338af0f66726bceb62a
+# Source0-md5:	7a9d4b772fc56d68479b0416f234105a
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
 URL:		https://curl.se/
@@ -38,7 +38,7 @@ BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 %{?with_ares:BuildRequires:	c-ares-devel >= 1.17.0}
 %{?with_gsasl:BuildRequires:	gsasl-devel}
-%{?with_kerberos5:BuildRequires:	heimdal-devel}
+%{?with_kerberos5:BuildRequires:	krb5-devel}
 BuildRequires:	libbrotli-devel >= 1.0.0
 BuildRequires:	libidn2-devel
 BuildRequires:	libpsl-devel
@@ -151,7 +151,7 @@ Group:		Development/Libraries
 Requires:	%{name}-libs%{?_isa} = %{version}-%{release}
 %{?with_ares:Requires:	c-ares-devel%{?_isa}}
 %{?with_gsasl:Requires:	gsasl-devel%{?_isa}}
-%{?with_kerberos5:Requires:	heimdal-devel%{?_isa}}
+%{?with_kerberos5:Requires:	krb5-devel%{?_isa}}
 Requires:	libbrotli-devel%{?_isa} >= 1.0.0
 Requires:	libidn2-devel%{?_isa}
 Requires:	libpsl-devel%{?_isa}
