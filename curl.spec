@@ -6,7 +6,7 @@
 %bcond_without	ssl		# SSL support
 %bcond_with	gnutls		# GnuTLS instead of OpenSSL
 %bcond_without	gsasl		# SCRAM support with gsasl
-%bcond_with	kerberos5	# Heimdal Kerberos 5 support
+%bcond_with	kerberos5	# (MIT) Kerberos 5 support
 %bcond_without	ldap		# LDAP support
 %bcond_without	http2		# HTTP/2.0 support (nghttp2 based)
 %bcond_with	http3		# HTTP/3.0 support (nghttp3/ngtcp2 based)
