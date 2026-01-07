@@ -318,14 +318,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libcurl.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libcurl.so.4
+%{_libdir}/libcurl.so.*.*.*
+%ghost %{_libdir}/libcurl.so.4
 
 %files devel
 %defattr(644,root,root,755)
 %doc docs/{CONTRIBUTE.md,INTERNALS.md}
 %attr(755,root,root) %{_bindir}/curl-config
-%attr(755,root,root) %{_libdir}/libcurl.so
+%{_libdir}/libcurl.so
 %{_includedir}/curl
 %{_pkgconfigdir}/libcurl.pc
 %{_aclocaldir}/libcurl.m4
