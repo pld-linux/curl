@@ -310,7 +310,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES.md COPYING README docs/{BUGS.md,FAQ,FEATURES.md,HISTORY.md,KNOWN_BUGS,SSLCERTS.md,THANKS,TODO,TheArtOfHttpScripting.md}
+%doc CHANGES.md COPYING README docs/{BUGS.md,FAQ.md,FEATURES.md,HISTORY.md,KNOWN_BUGS.md,SSLCERTS.md,THANKS,TODO.md,TheArtOfHttpScripting.md}
 %attr(755,root,root) %{_bindir}/curl
 %attr(755,root,root) %{_bindir}/wcurl
 %{_mandir}/man1/curl.1*
