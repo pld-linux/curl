@@ -12,10 +12,8 @@
 %bcond_with	http3		# HTTP/3.0 support (nghttp3/ngtcp2 based)
 %if "%{pld_release}" != "ac"
 %bcond_without	ares		# c-ares (asynchronous DNS operations) library support
-%bcond_without	rtmp		# Real Time Media Protocol support
 %else
 %bcond_with	ares		# c-ares (asynchronous DNS operations) library support
-%bcond_with	rtmp		# Real Time Media Protocol support
 %endif
 
 Summary:	A utility for getting files from remote servers (FTP, HTTP, and others)
@@ -25,12 +23,12 @@ Summary(pt_BR.UTF-8):	Busca URL (suporta FTP, TELNET, LDAP, GOPHER, DICT, HTTP e
 Summary(ru.UTF-8):	Утилита для получения файлов с серверов FTP, HTTP и других
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
-Version:	8.19.0
+Version:	8.20.0
 Release:	1
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.se/download/%{name}-%{version}.tar.xz
-# Source0-md5:	d5d3581ba4b4df1140a26a6efcf13e61
+# Source0-md5:	b91d9edf299e693ced85db203206e1d4
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
 URL:		https://curl.se/
@@ -42,7 +40,6 @@ BuildRequires:	automake
 BuildRequires:	libbrotli-devel >= 1.0.0
 BuildRequires:	libidn2-devel
 BuildRequires:	libpsl-devel
-%{?with_rtmp:BuildRequires:	librtmp-devel}
 %{?with_ssh:BuildRequires:	libssh2-devel >= 1.11.1}
 BuildRequires:	libtool
 BuildRequires:	nettle-devel
@@ -155,7 +152,6 @@ Requires:	%{name}-libs%{?_isa} = %{version}-%{release}
 Requires:	libbrotli-devel%{?_isa} >= 1.0.0
 Requires:	libidn2-devel%{?_isa}
 Requires:	libpsl-devel%{?_isa}
-%{?with_rtmp:Requires:	librtmp-devel%{?_isa}}
 %{?with_ssh:Requires:	libssh2-devel%{?_isa} >= 1.11.1}
 %{?with_http2:Requires:	nghttp2-devel%{?_isa} >= 1.15.0}
 %{?with_ldap:Requires:	openldap-devel%{?_isa}}
@@ -278,7 +274,6 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 	--with-fish-functions-dir=%{fish_compdir} \
 	--with-zsh-functions-dir=%{zsh_compdir} \
 	%{__with_without kerberos5 gssapi %{_prefix}} \
-	%{__with_without rtmp librtmp} \
 	%{__with_without http2 nghttp2} \
 	%{__with_without http3 nghttp3} \
 	%{__with_without http3 ngtcp2} \
