@@ -24,13 +24,22 @@ Summary(ru.UTF-8):	Утилита для получения файлов с се
 Summary(uk.UTF-8):	Утиліта для отримання файлів з серверів FTP, HTTP та інших
 Name:		curl
 Version:	8.23.0
-Release:	1
+Release:	2
 License:	MIT-like
 Group:		Applications/Networking
 Source0:	https://curl.se/download/%{name}-%{version}.tar.xz
 # Source0-md5:	f28835fef6d894c0559d5dbc0c071760
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-krb5flags.patch
+Patch2:		%{name}-CVE-2026-111481.patch
+Patch3:		%{name}-conn-reuse-pending-input.patch
+Patch4:		%{name}-CVE-2026-111482.patch
+Patch5:		%{name}-CVE-2026-111483.patch
+Patch6:		%{name}-CVE-2026-111878.patch
+Patch7:		%{name}-CVE-2026-111952.patch
+Patch8:		%{name}-CVE-2026-111954.patch
+Patch9:		%{name}-CVE-2026-111951.patch
+Patch10:	%{name}-CVE-2026-111950.patch
 URL:		https://curl.se/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -42,7 +51,6 @@ BuildRequires:	libidn2-devel
 BuildRequires:	libpsl-devel
 %{?with_ssh:BuildRequires:	libssh2-devel >= 1.11.1}
 BuildRequires:	libtool
-BuildRequires:	nettle-devel
 %{?with_http2:BuildRequires:	nghttp2-devel >= 1.15.0}
 %{?with_http3:BuildRequires:	nghttp3-devel}
 # with gnutls or openssl crypto, conforming to chosen curl crypto library
@@ -55,9 +63,10 @@ BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.527
 %if %{with ssl}
 %if %{with gnutls}
-BuildRequires:	gnutls-devel >= 3.1.10
+BuildRequires:	gnutls-devel >= 3.6.5
+BuildRequires:	nettle-devel
 %else
-BuildRequires:	openssl-devel >= 1.0.1
+BuildRequires:	openssl-devel >= 3.0.0
 %endif
 %endif
 BuildRequires:	tar >= 1:1.22
@@ -122,12 +131,12 @@ Summary:	curl library
 Summary(pl.UTF-8):	Biblioteka curl
 Group:		Libraries
 %{?with_ares:Requires:	c-ares >= 1.17.0}
-%{?with_gnutls:Requires:	gnutls-libs >= 3.1.10}
+%{?with_gnutls:Requires:	gnutls-libs >= 3.6.5}
 %{?with_ssh:Requires:	libssh2%{?_isa} >= 1.11.1}
 %{?with_http2:Requires:	nghttp2-libs >= 1.15.0}
-%if %{with ssl} && %{without gnutls}
 Requires:	libbrotli%{?_isa} >= 1.0.0
-Requires:	openssl%{?_isa} >= 1.0.1
+%if %{with ssl} && %{without gnutls}
+Requires:	openssl%{?_isa} >= 3.0.0
 %endif
 Suggests:	ca-certificates
 Conflicts:	ca-certificates < 20080809-4
@@ -157,9 +166,9 @@ Requires:	libpsl-devel%{?_isa}
 %{?with_ldap:Requires:	openldap-devel%{?_isa}}
 %if %{with ssl}
 %if %{with gnutls}
-Requires:	gnutls-devel%{?_isa} >= 3.1.10
+Requires:	gnutls-devel%{?_isa} >= 3.6.5
 %else
-Requires:	openssl-devel%{?_isa} >= 0.9.7c
+Requires:	openssl-devel%{?_isa} >= 3.0.0
 %endif
 %endif
 Requires:	zlib-devel%{?_isa}
@@ -241,6 +250,15 @@ Dopełnianianie parametrów w ZSH dla polecenia curl.
 %setup -q
 %patch -P0 -p1
 %patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
+%patch -P4 -p1
+%patch -P5 -p1
+%patch -P6 -p1
+%patch -P7 -p1
+%patch -P8 -p1
+%patch -P9 -p1
+%patch -P10 -p1
 
 %{__rm} m4/lt*.m4 m4/libtool.m4
 
